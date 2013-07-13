@@ -3,22 +3,24 @@
     <title>Profile</title>
 </head>
 <body>
-    <img src="{{ user.picture }}">
-    <h3> Hi {{ user.first_name }} </h3>
-    <a href="/logout">Click here to logout</a>
+    <img src="{{ session.user.picture }}">
+    <h3> Hi </h3>
+    <a href="{{ url_for('logout') }}">Click here to logout</a>
     <p>This is your info:
         <ul>
-        {% for key, value in user.iteritems() %}
+        {% for key, value in session.user.iteritems() %}
             <li> {{ key }}: {{ value }} </li>
         {% endfor %}
         </ul>
     </p>
-    <p>A job for you
-        <ul>
-        {% for key, value in job.iteritems() %}
-            <li> {{ key }}: {{ value }} </li>
+    {% if jobs %}
+        {% for job in jobs %}
+            {% for key, value in job.iteritems() %}
+                <li> {{ key }}: {{ value }} </li>
+            {% endfor %}
+            <a href="{{ url_for('save_job') }}?userid={{ session.user.id }}&jobid={{ job.id }}">Click here to save this job</a>
         {% endfor %}
-        </ul>
-    </p>
+    {% endif %}
+
 </body>
 </html>
