@@ -1,5 +1,55 @@
 body {
-	background-color: #eeeeee;
+	background: #e9e9e9 url(https://s1-s.licdn.com/scds/common/u/images/themes/katy/textures/texture_grain_200x200_v2.png);
+	font-family: Helvetica,Arial,sans-serif;
+	font-size: 62.5%;
+	line-height: 1.2;
+	color: #000;
+	margin: 0;
+	padding: 0;
+	border: 0;
+	outline: 0;
+	display: block;
 }
 
-#
+#top-header {
+	background-color: #3f3f3f;
+	background-image: -webkit-gradient(linear, 50% 0%, 50% 100%, color-stop(0%, #696969), color-stop(100%, #3f3f3f));
+	background-image: -webkit-linear-gradient(top, #696969 0%,#3f3f3f 100%);
+	background-image: -moz-linear-gradient(top, #696969 0%,#3f3f3f 100%);
+	background-image: -o-linear-gradient(top, #696969 0%,#3f3f3f 100%);
+	background-image: linear-gradient(top, #696969 0%,#3f3f3f 100%);
+	height: 42px;
+	z-index: 2;
+	position: relative;
+}
+
+#navigation {
+	background-color: #1a1a1a;
+	background-image: -webkit-gradient(linear, 50% 0%, 50% 100%, color-stop(0%, #1a1a1a), color-stop(100%, #303030));
+	background-image: -webkit-linear-gradient(top, #1a1a1a 0%,#303030 100%);
+	background-image: -moz-linear-gradient(top, #1a1a1a 0%,#303030 100%);
+	background-image: -o-linear-gradient(top, #1a1a1a 0%,#303030 100%);
+	background-image: linear-gradient(top, #1a1a1a 0%,#303030 100%);
+	z-index: 1;
+	height: 29px;
+	position: relative;
+}
+
+#sidebar {
+    float: left;
+    width: 250px;
+    background: #ccc;
+    min-height: 100%;
+}
+
+#in-logo {
+	text-indent: -119988px;
+	overflow: hidden;
+	text-align: left;
+	margin-top: 3px;
+	background: url('http://s.c.lnkd.licdn.com/scds/common/u/images/logos/logo_in_flat_43x34.png') left center no-repeat;
+	display: block;
+	height: 34px;
+	width: 43px;
+	float: left;
+}
