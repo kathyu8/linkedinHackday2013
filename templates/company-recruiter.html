@@ -44,7 +44,7 @@
 		            </div>
 		            <div id="jobOptions">
 		            	<div id="jobExtInfo">
-		            		<div id="universities" style="display:inline-block;">{{ job.university }}</div>
+		            		<div id="universities" style="display:inline-block;" class='job-uni'>{{ job.university }}</div>
 		            		{% if students %}
 				        	<a href="/applicants" id="applicants" style="display:inline-block;">{{ job.count }} Applicants Applied</a>
 				        	{% else %}
@@ -74,9 +74,9 @@
     </select>
     <br/>
     <input type="checkbox" id="university"> <span>University:</span>
-    <select>
-        <option value="ind0">University of Pennsylvania</option>
-        <option value="ind1">Carnegie Mellon University</option>
+    <select id='uni-options'>
+        <option value="ind0">University of Pittsburgh</option>
+        <option value="ind1">University of Puerto Rico-Rio Piedras</option>
     </select>
     <br/>
     <input type="checkbox"> <span>Year</span>
