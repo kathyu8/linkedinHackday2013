@@ -201,6 +201,11 @@ def recruiter_dashboard():
     return render_template('company-recruiter.html')
 
 
+@app.route('/recruiter')
+def recruiterTemplate():
+    return render_template('recruiter_stream_job_card.html')
+
+
 @app.route('/editpost')
 def edit_post():
     return render_template('edit_post.html')

@@ -1,0 +1,155 @@
+<!doctype html>
+<html>
+    <head>
+            <script src="/static/js/jquery-1.10.2.js"></script>
+            <link href="/static/css/reset.css" rel="stylesheet" type="text/css">
+            <link href="/static/css/style.css" rel="stylesheet" type="text/css">
+    </head>
+    <body>
+        <div id="top-header">
+            <div class="header-wrapper">
+                <!-- this link will go to our site -->
+                <a href="http://www.linkedin.com/" class="logo" id="in-logo">LinkedIn</a>
+                <div id="user-dock">
+                    <!-- this link will go to their linkedin profile -->
+                    <a href="/logout">Logout</a>
+                    <a href="http://www.linkedin.com"><img src="http://placehold.it/25x25"></a>
+                </div>
+            </div>
+        </div>
+        <div id="navigation">
+            <div class="header-wrapper">
+                <!-- add if for student/recruiter -->
+                <ul id="nav-links">
+                    <li class="nav-item"><a href="/index">Home</a></li>
+                    <li class="nav-item"><a href="/postjob">Post Job</a></li>
+                    <li class="nav-item"><a href="/saveddrafts">Saved Drafts</a></li>
+                </ul>
+            </div>
+        </div>
+        <div id="container">
+            <div id="stream">
+                <div id="stream-header">
+                    <!-- put school image here -->
+                    <img src="http://placehold.it/615x100">
+                </div>
+                <div id="jobs">
+                    <h2>JOBS POSTED TO YOUR UNIVERSITY:</h2>
+                    <div class="jobPost">
+                        <form style="display:inline-block; margin-right:10px;">
+                            <ul>
+                                <li id="jobActions"><input type="checkbox" name="" value=""><br></li>
+                                <li id="jobActions"><a href=""></a><img id="deleteBtn" src="/static/resources/deleteBtn.png" width="15px" height="15px"></li>
+                                <li id="jobActions"><a href=""><a/><img id="saveBtn" src="/static/resources/favorite.png" width="15px" height="15px"></li>
+                            </ul>
+                        </form>
+                        <div id="jobCard" style="display:inline-block">
+                            <div>
+                                <img id="companyLogo" src="http://placehold.it/60x60">
+                                <div id="jobHeader" style="display:inline-block">
+                                    <div>
+                                        <span id="companyName"> Example Company</span>
+                                    </div>
+                                    <span class="title" id="jobTitle">Software Developer</span>
+                                    <div id="locationAndDate">
+                                        <span id="location">Mountain View, CA | </span>
+                                        <span id="date"> March 13th, 2013</span>
+                                    </div>
+                                </div>
+                            </div>
+                            <ul class="year">
+                                  <li>Freshmen</li>
+                                  <li>Freshmen</li>
+                                  <li>Freshmen</li>
+                            </ul>
+                            <hr>
+                            <div id="jobDescription">
+                                Lorem ipsum dolor sit amet, consectetur adipisicing elit, sed do eiusmod
+                                tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam,
+                                quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo
+                                consequat. Duis aute irure dolor in reprehenderit in voluptate velit essevff fdsfa fsaf
+                            </div>
+                            <div id="jobOptions">
+                                <a href=""></a><img id="apply" src="/static/resources/apply_with_linkedin.png"><img/>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+            <div id="sidebar">
+                <div id="notifications" class="sidebar-item">
+                    <h2>NOTIFICATIONS</h2>
+                    <ul>
+                        <li>Here is a notification</li>
+                        <li>More notification</li>
+                    </ul>
+                </div>
+                <div id="filters" class="sidebar-item">
+                    <h2>FILTERS</h2>
+                    <input type="checkbox"> <span>City:</span> 
+                    <select>
+                        <option value="city0">New York, NY</option>
+                        <option value="city1">San Francisco, CA</option>
+                    </select>
+                    <br/>
+                    <input type="checkbox"> <span>State:</span> 
+                    <select>
+                        <option value="state0">New York</option>
+                        <option value="state1">California</option>
+                    </select>
+                    <br/>
+                    <input type="checkbox"> <span>Job Function:</span>
+                    <select>
+                        <option value="jobfn0">Software Engineering</option>
+                        <option value="jobfn1">Marketing</option>
+                    </select>
+                    <br/>
+                    <input type="checkbox"> <span>Industry:</span>
+                    <select>
+                        <option value="ind0">Technology</option>
+                        <option value="ind1">Animation & Film</option>
+                    </select>
+                    <br/>
+                    <input type="checkbox"> <span>Company</span>
+                    <select>
+                        <option value="company0">LinkedIn</option>
+                        <option value="company1">Google</option>
+                    </select>
+                </div>
+                <div id="saved-jobs" style: "padding-bottom: 10px">
+                    <h2>SAVED JOBS</h2>
+                    <div class="summary-block">
+                        <!-- use company logo here -->
+                        <a href="http://www.linkedin.com"><img src="http://placehold.it/25x25"></a>
+                        <div class="summary-title-block">
+                            <p class="job-title">
+                                Software Engineer
+                            </p>
+                            <p class="company">
+                                LinkedIn
+                            </p>
+                            <div class="summary-title-block-delete">
+                                <a href="/delete-saved"><img src="/static/resources/delete.png" width="15px" height="15px"></a>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="summary-block">
+                        <!-- use company logo here -->
+                        <a href="http://www.linkedin.com"><img src="http://placehold.it/25x25"></a>
+                        <div class="summary-title-block">
+                            <p class="job-title">
+                                Test Engineer Intern
+                            </p>
+                            <p class="company">
+                                Google
+                            </p>
+                            <div class="summary-title-block-delete">
+                                <a href="/delete-saved"><img src="/static/resources/delete.png" width="15px" height="15px"></a>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </body>
+</html>
