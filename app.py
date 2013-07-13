@@ -158,7 +158,7 @@ def student_profile():
         session['user'] = me.to_dict()
 
     # Get jobs that apply to user and convert them to python dicts
-    query = Jobposting.query.filter_by(university=user['schoolName'])
+    query = Jobposting.query.filter(Jobposting.university.contains(user['schoolName']))
     jobs = []
     for item in query:
         jobs.append(item.to_dict())
