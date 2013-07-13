@@ -10,8 +10,8 @@
 {% block jobcards %}
 	<h2>JOBS POSTED TO YOUR UNIVERSITY:</h2>
 	<div class="applycase">
-		<a id="applySelected">Apply to Selected</a>
-		<a id="applyAll">Apply to All</a>
+		<a id="applySelectedJobs">Apply to Selected</a>
+		<a id="applyAllJobs">Apply to All</a>
 	</div>
 	{% if jobs %}
 		{% for job in jobs %}
@@ -20,7 +20,7 @@
 			        <ul>
 			            <li id="jobActions"><input type="checkbox" name="" value=""><br></li>
 			            <li id="jobActions"><a href=""></a><img id="deleteBtn" src="../static/resources/deleteBtn.png" width="15px" height="15px"></li>
-			            <li id="jobActions"><a href="{{ url_for('save_job') }}?userid={{ session.user.id }}&jobid={{ job.id }}"><a/><img id="saveBtn" src="../static/resources/favorite.png" width="15px" height="15px"></li>
+			            <li id="jobActions"><a href="{{ url_for('save_job') }}?userid={{ session.user.id }}&jobid={{ job.id }}"><a/><img id="saveBtn" src="/static/resources/favorite.png" width="15px" height="15px"></li>
 			        </ul>
 			    </form>
 			    <div id="jobCard" style="display:inline-block">
@@ -45,7 +45,7 @@
 			            {{ job.job_description }}
 			        </div>
 			        <div id="jobOptions">
-			            <a id="apply" href="{{ url_for('apply_job') }}?userid={{ session.user.id }}&jobid={{ job.id }}"><img src="../static/resources/checkmark.png">Apply</a>
+			            <a id="apply" href="{{ url_for('apply_job') }}?userid={{ session.user.id }}&jobid={{ job.id }}"><img src="/static/resources/checkmark.png">Apply</a>
 			        </div>
 			    </div>
 			</div>

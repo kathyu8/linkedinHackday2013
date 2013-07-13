@@ -1,37 +1,39 @@
-$(window).load = function() {
-	$("#apply").click(applyForm);
+jQuery(document).ready(function($) {
 
-	$("#applySelected").click(function(){
-		var jobPosts = $("#jobPosts");
+	$("#jobOptions").on("click", applyForm);
+
+	$("#applySelected").on('click', function(event){
+		var jobPosts = $(".jobPosts");
 		jobPosts.each(function(i, jobPost){
 			console.log("clicking on jobPost!");
 			if($("willApply:checked").length === 1) {
 				applyForm();
 			}
-			return false;
-		});
-	});
-
-	$("#applyAll").click(function(){
-		var jobPosts = $("#jobPosts");
-		jobPosts.each(function(i, jobPost){
-			console.log("clicking on jobPost!");
-			applyForm();
 		});
 		return false;
 	});
-}
 
-function applyForm(){
+	$("#applyAllJobs").on('click', function(e){
+		var jobPosts = $(".jobPosts");
+		console.log(jobPosts);
+		$(".jobPosts").each(function(i, jobPost){
+			console.log("clicking on jobPost!");
+			applyForm(e);
+		});
+		return false;
+	});
+
+
+function applyForm(e){
 	console.log("applying!");
 	$("#apply").attr("id","applied");
 	$("#apply").html("Applied");
 	$("#checkmark").show();
 	$("#checkmark").attr("display", "inline");
+	e.preventDefault();
 	return false;
 }
 
-jQuery(document).ready(function($) {
     $('#university').click(function() {
         var $this = $(this);
         if ($this.is(':checked')) {
