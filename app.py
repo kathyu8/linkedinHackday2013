@@ -114,9 +114,10 @@ class Jobposting(db.Model):
 
 @app.route("/")
 def index():
-    session.pop('user', None)
-    if 'access_token' in session:
-        return redirect(url_for('student_profile'))
+    # if 'user' in session:
+    #     session.pop('user', None)
+    # if 'access_token' in session:
+    #     return redirect(url_for('student_profile'))
     return render_template('login.html')
 
 

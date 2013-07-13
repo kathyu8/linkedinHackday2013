@@ -10,12 +10,11 @@ $(document).ready(function() {
 	$("#applySelected").click(function(){
 		var jobPosts = $(".jobPost");
 		jobPosts.each(function(i, jobPost){
-			console.log("clicking on jobPost!");
-			if($("willApply:checked").length === 1) {
-				applyForm();
+			if($("#willApply").is(':checked')) {
+				applyForm(e);
 			}
-			return false;
 		});
+		return false;
 	});
 
 	$("#applyAll").click(function(){
@@ -23,6 +22,10 @@ $(document).ready(function() {
 		jobPosts.each(function(i, jobPost){
 			console.log("clicking on jobPost!");
 			applyForm();
+	$("#applyAllJobs").on('click', function(e){
+		var jobPosts = $(".jobPost");
+		$(".jobPost").each(function(i, jobPost){
+			applyForm(e);
 		});
 		return false;
 	});
@@ -63,4 +66,3 @@ $(document).ready(function() {
     });
 
 });
-
