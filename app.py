@@ -247,7 +247,7 @@ def logout():
 
 @app.route('/student')
 def student_dashboard():
-    return render_template('student.html')
+    return render_template('student_stream_job_card.html')
 
 
 @app.route('/company-recruiter')
@@ -349,7 +349,6 @@ def contact_student():
     # use the Web API to send your message
     s.web.send(message)
     return redirect(url_for('recruiter_profile'))
-
 
 app.secret_key = '\xf8\x98\x80\xea\xde\xad\x9d\xf9\x90\xf58\x19\x062\x13]&f\x90\xb6Q\x1b\xf6\xb8'
 

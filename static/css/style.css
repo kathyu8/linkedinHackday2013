@@ -181,7 +181,52 @@ border: 0; border-top: 1px solid #ccc;
 	margin-top: 15px;
 	position: absolute;
 	bottom: 5px;
-	right: 2px;
+	right: 5px;
+	background-color: #e9e9e9;
+	font-size: 12px;
+	border: none;
+	border-radius: 5px;
+	box-shadow: 1px 1px 1px #cdc9c9;
+	height:15px;
+	padding: 5px;
+	padding-bottom: 2px;
+	text-decoration: none;
+}
+
+#apply:hover {
+	background-color: #659ec7;
+	box-shadow: 2px 2px 2px #cdc9c9;
+}
+
+#applied {
+	margin-top: 15px;
+	position: absolute;
+	bottom: 5px;
+	right: 5px;
+	background-color: #4682B4;
+	font-size: 12px;
+	border: none;
+	border-radius: 3px;
+	box-shadow: 1px 1px 1px #659ec7;
+	height: 15px;
+	color: white;
+	padding: 3px;
+	text-decoration: none;	
+}
+
+.applycase > a {
+	text-decoration: none;
+	background-color: #e9e9e9;
+	border-radius: 3px;
+	box-shadow: 1px 1px 1px #659ec7;
+	padding: 5px;
+	margin-right: 20px;
+	margin-bottom: 10px;
+	color: black;
+}
+
+.applycase > a:hover {
+	background-color: #659ec7;
 }
 
 #deleteBtn, #editBtn, #deleteBtn {
