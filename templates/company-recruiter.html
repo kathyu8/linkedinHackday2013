@@ -1,16 +1,18 @@
-{% extends 'dashboard.html' %}
+{% extends 'dashboard-recruiter.html' %}
 
 {% block navlinks %}
-    <li class="nav-item"><a href="/index">Home</a></li>
+    <li class="nav-item"><a href="/recruiter_profile">Home</a></li>
     <li class="nav-item"><a href="/editpost">Post Job</a></li>
-    <li class="nav-item"><a href="/saveddrafts">Saved Drafts</a></li>
+    <li class="nav-item"><a href="/applicants">Job Applicants</a></li>
 {% endblock %}
 
 <!-- STREAM -->
 
 {% block streamheader %}
 	<!-- put school image here -->
-	<img src="http://placehold.it/615x100">
+    <div id="school-img">
+	<img src="/static/resources/linkedin-logo.png" height="100px">
+</div>
 {% endblock %}
 
 {% block jobcards %}
@@ -46,9 +48,9 @@
 		            	<div id="jobExtInfo">
 		            		<div id="universities" style="display:inline-block;" class='job-uni'>{{ job.university }}</div>
 		            		{% if students %}
-				        	<a href="" id="applicants" style="display:inline-block;">{{ students|length }} Applicants Applied</a>
+				        	<a href="/applicants" id="applicants" style="display:inline-block;">{{ job.count }} Applied</a>
 				        	{% else %}
-				        	<a href="" id="applicants" style="display:inline-block;">0 Applicants Applied</a>
+				        	<span style="display:inline-block;">0 Applied</span>
 		            		{% endif %}
 		            	</div> 
 		            </div>
@@ -62,8 +64,7 @@
 
 {% block notifications %}
 	<ul>
-	    <li>Here is a notification</li>
-	    <li>More notification</li>
+	    <li>You have no notifications.
 	</ul>
 {% endblock %}
 

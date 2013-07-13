@@ -1,20 +1,21 @@
-form {
-
-}
 
 textarea, input {
-	width: 500px;
+	width: 570px;
 	resize: none;
+}
+
+textarea {
+	height: 50px;
 }
 
 input {
 	height: 20px;
 }
 
-p {
-	font-size: 20px;
+.postps p {
+	font-size: 13px;
 	margin-top: 15px;
-	margin-bottom: -2px;
+	margin-bottom: 2px;
 }
 
 h1 {
@@ -24,17 +25,18 @@ h1 {
 }
 
 #postJobBtn {
-	margin-top: 10px;
+	float: right;
+	color: white;
+	margin-top: 15px;
 	font-size: 15px;
-	width: 100%;
 	text-align: center;
-	background-color: yellow;
-	border-radius: 5px;
-	border: none;
-	border-bottom-color: #cdc9c9;
-	box-shadow: 3px 3px 5px #cdc9c9;
+	background-color: #0077b5;
+	padding: 5px;
+	-moz-border-radius: 5px;
+  	-webkit-border-radius: 7px;
+	width: 150px;
 }
 
 #edit_post {
-	width: 500px;
+	width: 570px;
 }

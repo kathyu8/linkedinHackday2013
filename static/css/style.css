@@ -104,6 +104,10 @@ form{
 	vertical-align: top;
 }
 
+.jobPostForm {
+	margin-top:20px;
+}
+
 #jobCard{
 	background-color: #fff;
 	z-index: 1;
@@ -113,7 +117,7 @@ form{
 	position: relative;
 	padding: 10px;
 	box-shadow: 3px 3px 5px #cdc9c9;
-	margin-bottom: 15px;
+	margin-top: 20px;
 }
 
 #jobDescription{
@@ -181,7 +185,55 @@ border: 0; border-top: 1px solid #ccc;
 	margin-top: 15px;
 	position: absolute;
 	bottom: 5px;
-	right: 2px;
+	right: 5px;
+	background-color: #e9e9e9;
+	font-size: 12px;
+	border: none;
+	border-radius: 5px;
+	box-shadow: 1px 1px 1px #cdc9c9;
+	height:15px;
+	padding: 5px;
+	padding-bottom: 2px;
+	text-decoration: none;
+	vertical-align: top;
+}
+
+#apply:hover {
+	background-color: #659ec7;
+	box-shadow: 2px 2px 2px #cdc9c9;
+}
+
+#applied {
+	color: white;
+	margin-top: 15px;
+	position: absolute;
+	bottom: 5px;
+	right: 5px;
+	background-color: #4682B4;
+	font-size: 12px;
+	border: none;
+	border-radius: 5px;
+	box-shadow: 1px 1px 1px #cdc9c9;
+	height:15px;
+	padding: 5px;
+	padding-bottom: 2px;
+	text-decoration: none;
+	vertical-align: top;
+}
+
+.applycase > a {
+	text-decoration: none;
+	background-color: #e9e9e9;
+	border-radius: 3px;
+	box-shadow: 1px 1px 1px #659ec7;
+	padding: 5px;
+	margin-right: 20px;
+	margin-bottom: 10px;
+	color: black;
+}
+
+.applycase > a:hover {
+	background-color: #659ec7;
 }
 
 #deleteBtn, #editBtn, #deleteBtn {
@@ -282,4 +334,39 @@ border: 0; border-top: 1px solid #ccc;
 	top: 0px;
 	float: right;
 	background-position: 0 0;
+}
+
+#contactstudent {
+	margin-top: 10px;
+	vertical-align: top;
+	margin-left: 10px;
+}
+
+.studentapp {
+	padding: 10px;
+}
+
+.studentapp a {
+	text-decoration: none;
+	background-color: #0077b5;
+	color: white;
+	padding: 5px;
+	-moz-border-radius: 5px;
+  	-webkit-border-radius: 7px;
+	width: 150px;
+}
+
+.studentapp a:hover {
+	text-decoration: none;
+	background-color: #659EC7;
+	color: white;
+	padding: 5px;
+	-moz-border-radius: 5px;
+  	-webkit-border-radius: 7px;
+	width: 150px;
+}
+
+#school-img {
+	text-align: center;
+	padding-bottom: 10px;
 }

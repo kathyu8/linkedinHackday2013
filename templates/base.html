@@ -1,20 +1,24 @@
 <!doctype html>
 <html>
     <head>
-            <script src="../static/js/jquery-1.10.2.js"></script>
-            <link href="../static/css/reset.css" rel="stylesheet" type="text/css">
-            <link href="../static/css/style.css" rel="stylesheet" type="text/css">
+            <script src="/static/js/jquery-1.10.2.js"></script>
+            <script src="/static/js/dashboard.js"></script>
+            <link href="/static/css/reset.css" rel="stylesheet" type="text/css">
+            <link href="/static/css/style.css" rel="stylesheet" type="text/css">
+            
     </head>
     <body>
         <div id="top-header">
             <div class="header-wrapper">
                 <!-- this link will go to our site -->
                 <a href="http://www.linkedin.com/" class="logo" id="in-logo">LinkedIn</a>
+                {% block userdock %}        
                 <div id="user-dock">
                     <!-- this link will go to their linkedin profile -->
                     <a href="{{ url_for('logout') }}">Logout</a>
                     <a href="http://www.linkedin.com"><img src="{{ session.user.picture }}"width="25px" height="25px"></a>
                 </div>
+                {% endblock userdock %}
             </div>
         </div>
         <div id="navigation">

@@ -1,12 +1,20 @@
-{% extends 'base.html' %}
+{% extends 'non-dashboard-recruiter.html' %}
+
+{% block navlinks %}
+    <li class="nav-item"><a href="/recruiter_profile">Home</a></li>
+    <li class="nav-item"><a href="/editpost">Post Job</a></li>
+    <li class="nav-item"><a href="/applicants">Job Applicants</a></li>
+{% endblock %}
 
 <!-- enter job post data fields -->
-{% block stream %}
-<h2>EDIT JOB</h2>
+{% block jobcards %}
+<h2>CREATE A JOB</h2>
 	{% include 'postjob.html' %}
 {% endblock %}
 
 <!-- notifications & add universities -->
-{% block sidebar %}
-
+{% block notifications %}
+	<ul>
+	    <li>You have no notifications.</li>
+	</ul>
 {% endblock %}

@@ -2,9 +2,8 @@
 
 <!-- enter job post data fields -->
 {% block stream %}
-	<h2>Job Title</h2> {{ job.job_title }}
+	<p class="title">{{ job.company }}: {{ job.job_title }}</p>
 	<h2>Deadline</h2> {{ job.date }}
-	<h2>Company</h2> {{ job.company }}
 	<h2>Description</h2> {{ job.job_description }}
 	<h2>Industry</h2> {{ job.industry }}
 	<h2>Year</h2> {{ job.year }}
@@ -14,5 +13,7 @@
 
 <!-- notifications & add universities -->
 {% block sidebar %}
-    <a href="{{ url_for('save_job') }}?userid={{ session.user.id }}&jobid={{ job.id }}"><img src="/static/resources/apply_with_linkedin.png"></a>
+    <a href="{{ url_for('save_job') }}?userid={{ session.user.id }}&jobid={{ job.id }}"><div id="jobOptions">
+        <a id="apply"><img id="checkmark" src="/static/resources/checkmark.png">Apply</a>
+    </div>
 {% endblock %}
