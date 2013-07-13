@@ -3,7 +3,7 @@ Job Card Template
 	- Stream
 		- Company Name and Logo
 		- Title
-		- Location
+		- Location (city State)
 		- Year
 		- Tiny Description 
 		- Apply BUttone
