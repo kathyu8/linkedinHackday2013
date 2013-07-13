@@ -26,7 +26,7 @@
 			                <div>
 			                    <span id="companyName">{{ job.company }}</span>
 			                </div>
-			                <a href="/job/?id={{ job.id }}"><span class="title" id="jobTitle">{{ job.job_title }}</span></a>
+			                <a class="job-title-link" href="/job?id={{ job.id }}"><span class="title" id="jobTitle">{{ job.job_title }}</span></a>
 			                <div id="locationAndDate">
 			                    <span id="location">{{ job.location }} | </span>
 			                    <span id="date"> Deadline: {{ job.date }}</span>

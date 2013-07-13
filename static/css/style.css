@@ -102,7 +102,6 @@ form{
 .title{
 	font-size: 25px;
 	vertical-align: top;
-	color: #585858;
 }
 
 #jobCard{
@@ -120,6 +119,14 @@ form{
 #jobDescription{
 	font-size: 13px;
 	color: #686868;
+}
+
+#jobHeader a {
+	color: #585858;
+	text-decoration: none;
+}
+#jobHeader a:hover{
+	color: #888888;
 }
 
 hr {
@@ -179,10 +186,16 @@ border: 0; border-top: 1px solid #ccc;
 
 #deleteBtn, #editBtn, #deleteBtn {
 	opacity: 0.5;
+	cursor: pointer;
+}
+
+#saveBtn {
+	opacity: 0.5;
 }
 
 #saveBtn:hover, #editBtn:hover, #deleteBtn:hover {
 	opacity: 1;
+	cursor: pointer;
 
 }
 /* CONTAINER */
@@ -208,19 +221,20 @@ border: 0; border-top: 1px solid #ccc;
 
 #stream {
 	display: inline-block;
+	width: 615px;
+    border-right: solid 1px #ccc;
+    padding-right: 20px;
 }
 
 #sidebar {
 	display: inline-block;
     float: right;
     width: 280px;
-    border-left: solid 1px #ccc;
-    padding-left: 20px;
 }
 
 .sidebar-item {
 	border-bottom: solid 1px #ccc;
-	padding-bottom: 10px;
+	padding-bottom: 15px;
 }
 
 .sidebar-item input {

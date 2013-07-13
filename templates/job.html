@@ -2,17 +2,17 @@
 
 <!-- enter job post data fields -->
 {% block stream %}
-	<h2>Apply for this Job</h2>
 	<h2>Job Title</h2> {{ job.job_title }}
-	<h2>Company</h2>
-	<h2>Description</h2>
-	<h2>Industry</h2>
-	<h2>Year</h2>
-	<h2>Skills Required</h2>
-	<h2>Job Function</h2>
+	<h2>Deadline</h2> {{ job.date }}
+	<h2>Company</h2> {{ job.company }}
+	<h2>Description</h2> {{ job.job_description }}
+	<h2>Industry</h2> {{ job.industry }}
+	<h2>Year</h2> {{ job.year }}
+	<h2>Skills Required</h2> {{ job.desired_skills }}
+	<h2>Location</h2> {{ job.location }}
 {% endblock %}
 
 <!-- notifications & add universities -->
 {% block sidebar %}
-
+    <a href="{{ url_for('save_job') }}?userid={{ session.user.id }}&jobid={{ job.id }}"><img src="/static/resources/apply_with_linkedin.png"></a>
 {% endblock %}

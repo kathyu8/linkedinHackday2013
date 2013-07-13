@@ -248,17 +248,13 @@ def recruiter_dashboard():
 def recruiterTemplate():
     return render_template('recruiter_stream_job_card.html')
 
-
-@app.route('/editpost')
-def edit_post():
-    return render_template('edit_post.html')
-
 @app.route("/job")
 def job_page():
     token = session['access_token']
     profile = requests.get('https://api.linkedin.com/v1/people/~:(first-name,last-name,email-address,summary,specialties,positions,picture-url,skills,educations,public-profile-url)?format=json&oauth2_access_token='+token)
-    job_id = requests.get('id')
-    job = Jobposting.query.filter_by(id=item.jobid).one()
+    job_id = request.args.get('id')
+    job = Jobposting.query.get(job_id)
+    values = job.to_dict()
     user = get_student_profile(profile.content)
     me = User.query.filter_by(email=user['email']).first()
 
@@ -283,9 +279,9 @@ def job_page():
     #for item in query2:
     #    job = Jobposting.query.filter_by(id=item.jobid).one()
     #    saved.append(job.to_dict())
-    return render_template('student.html', jobs=jobs, saved=saved)
+    return render_template('job.html', job=values)
 
-@app.route('/postjob', methods=['GET', 'POST'])
+@app.route('/editpost', methods=['GET', 'POST'])
 def post_job():
     if request.method == 'POST':
         jobpost = Jobposting(
@@ -303,7 +299,7 @@ def post_job():
         db.session.add(jobpost)
         db.session.commit()
         return redirect(url_for('recruiter_profile'))
-    return render_template('postjob.html')
+    return render_template('edit_post.html')
 
 
 @app.route('/savejob')
