@@ -1,20 +1,21 @@
-form {
-
-}
 
 textarea, input {
-	width: 500px;
+	width: 570px;
 	resize: none;
+}
+
+textarea {
+	height: 50px;
 }
 
 input {
 	height: 20px;
 }
 
-p {
-	font-size: 20px;
+.postps p {
+	font-size: 13px;
 	margin-top: 15px;
-	margin-bottom: -2px;
+	margin-bottom: 2px;
 }
 
 h1 {
@@ -37,5 +38,5 @@ h1 {
 }
 
 #edit_post {
-	width: 500px;
+	width: 570px;
 }

@@ -1,7 +1,6 @@
-{% extends 'dashboard.html' %}
+{% extends 'dashboard-student.html' %}
 
 <!-- STREAM -->
-
 {% block streamheader %}
 	<!-- put school image here -->
 	<img src="http://placehold.it/615x100">
@@ -46,7 +45,7 @@
 			            {{ job.job_description }}
 			        </div>
 			        <div id="jobOptions">
-			            <a href="{{ url_for('apply_job') }}?userid={{ session.user.id }}&jobid={{ job.id }}"><img id="apply" src="../static/resources/apply_with_linkedin.png"></a>
+			            <a href="{{ url_for('apply_job') }}?userid={{ session.user.id }}&jobid={{ job.id }}"><img id="apply" src="/static/resources/apply_with_linkedin.png"></a>
 			        </div>
 			    </div>
 			</div>

@@ -1,4 +1,4 @@
-{% extends 'dashboard.html' %}
+{% extends 'non-dashboard-recruiter.html' %}
 
 {% block navlinks %}
     <li class="nav-item"><a href="/recruiter_profile">Home</a></li>
@@ -8,7 +8,7 @@
 
 <!-- enter job post data fields -->
 {% block jobcards %}
-<h2>EDIT JOB</h2>
+<h2>CREATE A JOB</h2>
 	{% include 'postjob.html' %}
 {% endblock %}
 
@@ -18,38 +18,3 @@
 	    <li>You have no notifications.</li>
 	</ul>
 {% endblock %}
-
-{% block savedjobs %}
-    <h2>POSTED JOBS</h2>
-    <div class="summary-block">
-        <!-- use company logo here -->
-        <a href="http://www.linkedin.com"><img src="http://placehold.it/25x25"></a>
-        <div class="summary-title-block">
-            <p class="job-title">
-                Software Engineer
-            </p>
-            <p class="company">
-                Created on 7/12/13
-            </p>
-            <div class="summary-title-block-delete">
-                <a href="/delete-saved"><img src="../static/resources/delete.png" width="15px" height="15px"></a>
-            </div>
-        </div>
-    </div>
-    <div class="summary-block">
-        <!-- use company logo here -->
-        <a href="http://www.linkedin.com"><img src="http://placehold.it/25x25"></a>
-        <div class="summary-title-block">
-            <p class="job-title">
-                Test Engineer Intern
-            </p>
-            <p class="company">
-                Created on 3/4/13
-            </p>
-            <div class="summary-title-block-delete">
-                <a href="/delete-saved"><img src="../static/resources/delete.png" width="15px" height="15px"></a>
-            </div>
-        </div>
-    </div>
-{% endblock %}
-

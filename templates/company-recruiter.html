@@ -1,4 +1,4 @@
-{% extends 'dashboard.html' %}
+{% extends 'dashboard-recruiter.html' %}
 
 {% block navlinks %}
     <li class="nav-item"><a href="/recruiter_profile">Home</a></li>
@@ -46,9 +46,9 @@
 		            	<div id="jobExtInfo">
 		            		<div id="universities" style="display:inline-block;" class='job-uni'>{{ job.university }}</div>
 		            		{% if students %}
-				        	<a href="/applicants" id="applicants" style="display:inline-block;">{{ job.count }} Applicants Applied</a>
+				        	<a href="/applicants" id="applicants" style="display:inline-block;">{{ job.count }} Applied</a>
 				        	{% else %}
-				        	<span style="display:inline-block;">0 Applicants Applied</span>
+				        	<span style="display:inline-block;">0 Applied</span>
 		            		{% endif %}
 		            	</div> 
 		            </div>
