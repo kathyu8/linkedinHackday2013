@@ -2,6 +2,7 @@
 import requests
 from api import *
 import json
+import sendgrid
 
 from flask import Flask, render_template, request, session, redirect, url_for
 from flask.ext.sqlalchemy import SQLAlchemy
@@ -31,6 +32,7 @@ class User(db.Model):
     recruiter = db.Column(db.Boolean)
     picture = db.Column(db.Text)
     public_profile_url = db.Column(db.Text)
+    message_count = db.Column(db.Integer)
 
     def to_dict(self):
         return {
@@ -39,7 +41,8 @@ class User(db.Model):
             'email': self.email,
             'recruiter': self.recruiter,
             'picture': self.picture,
-            'public_profile_url': self.public_profile_url
+            'public_profile_url': self.public_profile_url,
+            'message_count': self.message_count
         }
 
     def __init__(self, access_token=None, email=None, recruiter=None, picture=None, public_profile_url=None):
@@ -48,6 +51,7 @@ class User(db.Model):
         self.recruiter = recruiter
         self.picture = picture
         self.public_profile_url = public_profile_url
+        self.message_count = 0
 
     def __repr__(self):
         return '<User %r Email: %s>' % (self.id, self.email)
@@ -264,7 +268,20 @@ def save_job():
 
 @app.route('/contact_student')
 def contact_student():
-    return('sueno.html')
+    sid = request.args.get('sid')
+    user = User.query.filter_by(id=sid).one()
+
+    # make a secure connection to SendGrid
+    s = sendgrid.Sendgrid('chrisrodz', 'emmyNoether', secure=True)
+
+    # make a message object
+    message = sendgrid.Message("christian.etpr10@gmail.com", "New Job offer from Inversity!", "Hey you have a new offer! Come check it out", "Hey you have a new offer! Come check it out")
+    # add a recipient
+    message.add_to(user.email, "Friendly Student")
+
+    # use the Web API to send your message
+    s.web.send(message)
+    return redirect(url_for('recruiter_profile'))
 
 
 app.secret_key = '\xf8\x98\x80\xea\xde\xad\x9d\xf9\x90\xf58\x19\x062\x13]&f\x90\xb6Q\x1b\xf6\xb8'
