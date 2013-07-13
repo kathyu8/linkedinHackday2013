@@ -30,6 +30,7 @@ class User(db.Model):
     email = db.Column(db.Text, unique=True)
     recruiter = db.Column(db.Boolean)
     picture = db.Column(db.Text)
+    public_profile_url = db.Column(db.Text)
 
     def to_dict(self):
         return {
@@ -38,13 +39,15 @@ class User(db.Model):
             'email': self.email,
             'recruiter': self.recruiter,
             'picture': self.picture,
+            'public_profile_url': self.public_profile_url
         }
 
-    def __init__(self, access_token=None, email=None, recruiter=None, picture=None):
+    def __init__(self, access_token=None, email=None, recruiter=None, picture=None, public_profile_url=None):
         self.access_token = access_token
         self.email = email
         self.recruiter = recruiter
         self.picture = picture
+        self.public_profile_url = public_profile_url
 
     def __repr__(self):
         return '<User %r Email: %s>' % (self.id, self.email)
@@ -137,13 +140,13 @@ def hola_recruiter():
 @app.route("/student_profile")
 def student_profile():
     token = session['access_token']
-    profile = requests.get('https://api.linkedin.com/v1/people/~:(first-name,last-name,email-address,summary,specialties,positions,picture-url,skills,educations)?format=json&oauth2_access_token='+token)
+    profile = requests.get('https://api.linkedin.com/v1/people/~:(first-name,last-name,email-address,summary,specialties,positions,picture-url,skills,educations,public-profile-url)?format=json&oauth2_access_token='+token)
     user = get_student_profile(profile.content)
     me = User.query.filter_by(email=user['email']).first()
 
     # Save user to db if not already there
     if not me:
-        newuser = User(access_token=token, email=user['email'], recruiter=False, picture=user['picture'])
+        newuser = User(access_token=token, email=user['email'], recruiter=False, picture=user['picture'], public_profile_url=user['public_profile_url'])
         db.session.add(newuser)
         db.session.commit()
         session['user'] = newuser.to_dict()
@@ -168,13 +171,13 @@ def student_profile():
 @app.route("/recruiter_profile")
 def recruiter_profile():
     token = session['access_token']
-    profile = requests.get('https://api.linkedin.com/v1/people/~:(first-name,last-name,email-address,summary,specialties,positions,picture-url,skills,educations)?format=json&oauth2_access_token='+token)
+    profile = requests.get('https://api.linkedin.com/v1/people/~:(first-name,last-name,email-address,summary,specialties,positions,picture-url,skills,educations,public-profile-url)?format=json&oauth2_access_token='+token)
     user = get_student_profile(profile.content)
     me = User.query.filter_by(email=user['email']).first()
 
     # Save user to db if not already there
     if not me:
-        newuser = User(access_token=token, email=user['email'], recruiter=True)
+        newuser = User(access_token=token, email=user['email'], recruiter=True, picture=user['picture'], public_profile_url=user['public_profile_url'])
         db.session.add(newuser)
         db.session.commit()
         session['user'] = newuser.to_dict()
