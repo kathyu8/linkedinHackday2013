@@ -97,34 +97,25 @@
 {% endblock %}
 
 {% block savedjobs %}
-	<div class="summary-block">
-	    <!-- use company logo here -->
-	    <a href="http://www.linkedin.com"><img src="http://placehold.it/25x25"></a>
-	    <div class="summary-title-block">
-	        <p class="job-title">
-	            Software Engineer
-	        </p>
-	        <p class="company">
-	            LinkedIn
-	        </p>
-	        <div class="summary-title-block-delete">
-	            <a href="/delete-saved"><img id="deleteBtn" src="../static/resources/delete.png" width="15px" height="15px"></a>
-	        </div>
-	    </div>
-	</div>
-	<div class="summary-block">
-	    <!-- use company logo here -->
-	    <a href="http://www.linkedin.com"><img src="http://placehold.it/25x25"></a>
-	    <div class="summary-title-block">
-	        <p class="job-title">
-	            Test Engineer Intern
-	        </p>
-	        <p class="company">
-	            Google
-	        </p>
-	        <div class="summary-title-block-delete">
-	            <a href="/delete-saved"><img id="deleteBtn" src="../static/resources/delete.png" width="15px" height="15px"></a>
-	        </div>
-	    </div>
-	</div>
+    {% if saved %}
+            <h2>SAVED JOBS</h2>
+        {% for job in saved %}
+            <div class="summary-block">
+                <!-- use company logo here -->
+                <a href="http://www.linkedin.com"><img src="http://placehold.it/25x25"></a>
+                <div class="summary-title-block">
+                    <p class="job-title">
+                        {{ job.job_title }}
+                    </p>
+                    <p class="company">
+                        {{ job.company }}
+                    </p>
+                    <div class="summary-title-block-delete">
+                        <a href="/delete-saved?jid={{ job.id }}"><img id="deleteBtn" src="../static/resources/delete.png" width="15px" height="15px"></a>
+                    </div>
+                </div>
+            </div>
+        {% endfor %}        
+    {% endif %}
+
 {% endblock %}
