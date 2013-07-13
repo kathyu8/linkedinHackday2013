@@ -263,6 +263,37 @@ def recruiterTemplate():
 def edit_post():
     return render_template('edit_post.html')
 
+@app.route("/job")
+def job_page():
+    token = session['access_token']
+    profile = requests.get('https://api.linkedin.com/v1/people/~:(first-name,last-name,email-address,summary,specialties,positions,picture-url,skills,educations,public-profile-url)?format=json&oauth2_access_token='+token)
+    job_id = requests.get('id')
+    job = Jobposting.query.filter_by(id=item.jobid).one()
+    user = get_student_profile(profile.content)
+    me = User.query.filter_by(email=user['email']).first()
+
+    # Save user to db if not already there
+    if not me:
+        newuser = User(access_token=token, email=user['email'], recruiter=False, picture=user['picture'], public_profile_url=user['public_profile_url'])
+        db.session.add(newuser)
+        db.session.commit()
+        session['user'] = newuser.to_dict()
+        print 'user saved to db'
+    else:
+        session['user'] = me.to_dict()
+
+    # Get jobs that apply to user and convert them to python dicts
+    query = Jobposting.query.filter_by(university=user['schoolName'])
+    jobs = []
+    for item in query:
+        jobs.append(item.to_dict())
+
+    #query2 = Savedjobs.query.filter_by(userid=session['user']['id'])
+    #saved = []
+    #for item in query2:
+    #    job = Jobposting.query.filter_by(id=item.jobid).one()
+    #    saved.append(job.to_dict())
+    return render_template('student.html', jobs=jobs, saved=saved)
 
 @app.route('/postjob', methods=['GET', 'POST'])
 def post_job():

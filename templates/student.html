@@ -26,7 +26,7 @@
 			                <div>
 			                    <span id="companyName">{{ job.company }}</span>
 			                </div>
-			                <span class="title" id="jobTitle">{{ job.job_title }}</span>
+			                <a href="/job/?id={{ job.id }}"><span class="title" id="jobTitle">{{ job.job_title }}</span></a>
 			                <div id="locationAndDate">
 			                    <span id="location">{{ job.location }} | </span>
 			                    <span id="date"> Deadline: {{ job.date }}</span>
@@ -41,7 +41,7 @@
 			            {{ job.job_description }}
 			        </div>
 			        <div id="jobOptions">
-			            <a href=""></a><img id="apply" src="../static/resources/apply_with_linkedin.png"><img/>
+			            <a href="{{ url_for('save_job') }}?userid={{ session.user.id }}&jobid={{ job.id }}"><img id="apply" src="../static/resources/apply_with_linkedin.png"></a>
 			        </div>
 			    </div>
 			</div>

@@ -62,3 +62,18 @@ Side Bar
 		- Saved Drafts
 Stream Body
 
+
+
+TODO:
+
+student
+	- job page
+	- filtering
+	- saved jobs page
+
+recruiter
+	- filters
+	- make sure can edit job
+	- applicants for a job
+	- applicants for a specific job
+	- saved drafts page
