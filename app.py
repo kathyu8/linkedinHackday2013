@@ -64,6 +64,8 @@ class Jobposting(db.Model):
     year = db.Column(db.Text, nullable=False)
     university = db.Column(db.Text, nullable=False)
     tags = db.Column(db.Text, nullable=False)
+    location = db.Column(db.Text, nullable=False)
+    date = db.Column(db.Text, nullable=False)
 
 
     def to_dict(self):
@@ -79,10 +81,12 @@ class Jobposting(db.Model):
             'desired_skills': self.desired_skills,
             'year': self.year,
             'university': self.university,
-            'tags': self.tags
+            'tags': self.tags,
+            'location': self.location,
+            'date': self.date,
         }
 
-    def __init__(self, company=None, company_description=None, industry=None, job_title=None, experience=None, employment_type=None, job_description=None, desired_skills=None, university=None, tags=None, year=None, userid=None):
+    def __init__(self, company=None, company_description=None, industry=None, job_title=None, experience=None, employment_type=None, job_description=None, desired_skills=None, university=None, tags=None, year=None, userid=None, location=None, date=None):
         self.company = company
         self.company_description = company_description
         self.industry = industry
@@ -95,6 +99,8 @@ class Jobposting(db.Model):
         self.year = year
         self.tags = tags
         self.userid = userid
+        self.location = location
+        self.date = date
 
     def __repr__(self):
         return u'<Job Posting: %r>' % self.id
@@ -179,10 +185,18 @@ def recruiter_profile():
     # Get info relevant to recruiter
     query = Jobposting.query.filter_by(userid=session['user']['id'])
     jobs = []
+    students = []
     for item in query:
-        jobs.append(item.to_dict())
+        res = item.to_dict()
+        res['count'] = Savedjobs.query.filter_by(jobid=item.id).count()
+        jobs.append(res)
+        ids = Savedjobs.query.all()
+        if ids:
+            for sid in ids:
+                s = User.query.all()[0]
+                students.append(s.to_dict())
 
-    return render_template('recruiter.html', jobs=jobs)
+    return render_template('recruiter.html', jobs=jobs, students=students)
 
 
 @app.route('/logout')
@@ -226,6 +240,8 @@ def post_job():
             desired_skills=request.form['desired_skills'],
             university=request.form['university'],
             tags=request.form['tags'],
+            location=request.form['location'],
+            date=request.form['date'],
             year=request.form['year'])
         db.session.add(jobpost)
         db.session.commit()
