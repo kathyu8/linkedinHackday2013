@@ -147,7 +147,13 @@ def student_profile():
     jobs = []
     for item in query:
         jobs.append(item.to_dict())
-    return render_template('profile.html', jobs=jobs)
+
+    query2 = Savedjobs.query.filter_by(userid=session['user']['id'])
+    saved = []
+    for item in query2:
+        job = Jobposting.query.filter_by(id=item.jobid).one()
+        saved.append(job.to_dict())
+    return render_template('profile.html', jobs=jobs, saved=saved)
 
 
 @app.route("/recruiter_profile")

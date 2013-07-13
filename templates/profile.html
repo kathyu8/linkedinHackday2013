@@ -22,5 +22,14 @@
         {% endfor %}
     {% endif %}
 
+    {% if saved %}
+        <h3>Jobs you've applied to:</h3>
+        {% for job in saved %}
+            {% for key, value in job.iteritems() %}
+                <li> {{ key }}: {{ value }} </li>
+            {% endfor %}
+        {% endfor %}
+    {% endif %}
+
 </body>
 </html>
