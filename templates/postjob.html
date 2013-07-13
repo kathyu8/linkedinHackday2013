@@ -1,45 +1,44 @@
 <!doctype html>
 <html>
 <head>
-
+    <script src="/static/js/jquery-1.10.2.js"></script>
+    <script src="/static/js/editJobs.js"></script>
+    <link href="/static/css/reset.css" rel="stylesheet" type="text/css">
+    <link href="/static/css/style.css" rel="stylesheet" type="text/css">
+    <link href="/static/css/editJobs.css" rel="stylesheet" type="text/css">
 </head>
 <body>
-    <div>
+    <div id="edit_post">
         <form action="" method="post">
             <div>
                 <h1>Company</h1>
-                <input type="text" name="company">
+                <input type="text" placeholder="Company Name" name="company" size="100" maxlength="100">
                 <p>Description</p>
-                <textarea name="company_description"></textarea>
+                <textarea name="company_description" placeholder="Describe Your Company"rows="6" cols="100"></textarea>
                 <p>Industry</p>
                 <input type="text" name="industry">
             </div>
+            <hr>
             <div>
                 <h1>Position</h1>
                 <p>Job Title</p>
-                <input type="text" name="job_title">
-                <p>Experience</p>
-                <input type="text" name="experience">
-                <p>Employment Type</p>
-                <input type="text" name="employment_type">
+                <input type="text" name="job_title" size="40" maxlength="40">
                 <p>Job Description</p>
                 <textarea name="job_description"></textarea>
                 <p>Desired Skills</p>
                 <textarea name="desired_skills"></textarea>
                 <p>University</p>
-                <input type="text" name="university">
-                <p>Tags</p>
-                <input type="text" name="tags">
+                <input type="text" name="university" id="university">
                 <p>Year</p>
                 <select name='year'>
-                    <option value='Sophmore'>Sophmore</option>
+                    <option value='Sophomore'>Sophmore</option>
                     <option value='Junior'>Junior</option>
                     <option value='Senior'>Senior</option>
                     <option value='Master'>Master's</option>
                     <option value='Ph.D'>Ph.D</option>
                 </select>
             </div>
-            <input type="submit" value="submit">
+            <div><button type="submit" value="Submit" id="postJobBtn">Post Job</button></div>
         </form>
     </div>
 </body>

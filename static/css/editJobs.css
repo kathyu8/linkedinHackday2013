@@ -1,0 +1,40 @@
+form {
+
+}
+
+textarea, input {
+	width: 500px;
+	resize: none;
+}
+
+input {
+	height: 20px;
+}
+
+p {
+	font-size: 20px;
+	margin-top: 15px;
+	margin-bottom: -2px;
+}
+
+h1 {
+	font-size: 25px;
+	vertical-align: top;
+	color: #585858;
+}
+
+#postJobBtn {
+	margin-top: 10px;
+	font-size: 15px;
+	width: 100%;
+	text-align: center;
+	background-color: yellow;
+	border-radius: 5px;
+	border: none;
+	border-bottom-color: #cdc9c9;
+	box-shadow: 3px 3px 5px #cdc9c9;
+}
+
+#edit_post {
+	width: 500px;
+}
