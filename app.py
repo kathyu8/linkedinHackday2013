@@ -188,10 +188,17 @@ def logout():
     return redirect(url_for('index'))
 
 
-@app.route('/index')
-def dashboard():
-    return render_template('index.html')
+@app.route('/student')
+def student_dashboard():
+    return render_template('student.html')
 
+@app.route('/company-recruiter')
+def recruiter_dashboard():
+    return render_template('company-recruiter.html')
+
+@app.route('/editpost')
+def edit_post():
+    return render_template('edit_post.html')
 
 @app.route('/postjob', methods=['GET', 'POST'])
 def post_job():

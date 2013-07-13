@@ -168,7 +168,11 @@ border: 0; border-top: 1px solid #ccc;
 }
 
 #saveBtn:hover {
-	src: "../static/resources/starOutline.png";
+	opacity: 0.5;
+}
+
+#deleteBtn:hover {
+	opacity: 0.5;
 }
 
 /* CONTAINER */
@@ -196,6 +200,7 @@ border: 0; border-top: 1px solid #ccc;
 }
 
 #sidebar {
+	display: inline-block;
     float: right;
     width: 280px;
     border-left: solid 1px #ccc;

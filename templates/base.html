@@ -1,0 +1,44 @@
+<!doctype html>
+<html>
+    <head>
+            <script src="../static/js/jquery-1.10.2.js"></script>
+            <link href="../static/css/reset.css" rel="stylesheet" type="text/css">
+            <link href="../static/css/style.css" rel="stylesheet" type="text/css">
+    </head>
+    <body>
+        <div id="top-header">
+            <div class="header-wrapper">
+                <!-- this link will go to our site -->
+                <a href="http://www.linkedin.com/" class="logo" id="in-logo">LinkedIn</a>
+                <div id="user-dock">
+                    <!-- this link will go to their linkedin profile -->
+                    <a href="/logout">Logout</a>
+                    <a href="http://www.linkedin.com"><img src="http://placehold.it/25x25"></a>
+                </div>
+            </div>
+        </div>
+        <div id="navigation">
+            <div class="header-wrapper">
+                <!-- add if for student/recruiter -->
+                <ul id="nav-links">
+                    <li class="nav-item"><a href="/index">Home</a></li>
+                    <li class="nav-item"><a href="/postjob">Post Job</a></li>
+                    <li class="nav-item"><a href="/saveddrafts">Saved Drafts</a></li>
+                </ul>
+            </div>
+        </div>
+
+	    <div id="container">
+    	    <div id="stream">
+                {% block stream %}
+
+                {% endblock %}
+            </div>
+    	    <div id="sidebar">
+                {% block sidebar %}
+
+                {% endblock %}
+    	    </div>
+    	</div>
+    </body>
+</html>
