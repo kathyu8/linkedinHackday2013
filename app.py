@@ -19,10 +19,19 @@ class Savedjobs(db.Model):
     id = db.Column(db.Integer, primary_key=True)
     userid = db.Column(db.Integer)
     jobid = db.Column(db.Integer)
+    applied = db.Column(db.Boolean)
 
-    def __init__(self, userid=None, jobid=None):
+    def __init__(self, userid=None, jobid=None, applied=None):
         self.userid = userid
         self.jobid = jobid
+        self.applied = applied
+
+    def to_dict(self):
+        return {
+            'userid': self.userid,
+            'jobid': self.jobid,
+            'applied': self.applied,
+        }
 
 
 class User(db.Model):
@@ -149,7 +158,7 @@ def student_profile():
         session['user'] = me.to_dict()
 
     # Get jobs that apply to user and convert them to python dicts
-    query = Jobposting.query.filter_by(university=user['schoolName'])
+    query = Jobposting.query.filter(Jobposting.university.contains(user['schoolName']))
     jobs = []
     for item in query:
         jobs.append(item.to_dict())
@@ -158,7 +167,9 @@ def student_profile():
     saved = []
     for item in query2:
         job = Jobposting.query.filter_by(id=item.jobid).one()
-        saved.append(job.to_dict())
+        res = job.to_dict()
+        res['applied'] = item.applied
+        saved.append(res)
     return render_template('student.html', jobs=jobs, saved=saved)
 
 
@@ -185,7 +196,7 @@ def recruiter_profile():
     students = []
     for item in query:
         res = item.to_dict()
-        res['count'] = Savedjobs.query.filter_by(jobid=item.id).count()
+        res['count'] = Savedjobs.query.filter_by(jobid=item.id, applied=True).count()
         jobs.append(res)
         ids = Savedjobs.query.all()
         if ids:
@@ -306,7 +317,17 @@ def post_job():
 def save_job():
     uid = request.args.get('userid')
     jid = request.args.get('jobid')
-    job = Savedjobs(userid=uid, jobid=jid)
+    job = Savedjobs(userid=uid, jobid=jid, applied=False)
+    db.session.add(job)
+    db.session.commit()
+    return redirect(url_for('student_profile'))
+
+
+@app.route('/applyjob')
+def apply_job():
+    uid = request.args.get('userid')
+    jid = request.args.get('jobid')
+    job = Savedjobs(userid=uid, jobid=jid, applied=True)
     db.session.add(job)
     db.session.commit()
     return redirect(url_for('student_profile'))

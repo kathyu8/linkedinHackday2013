@@ -67,17 +67,17 @@ Stream Body
 TODO:
 
 student
-	- job page
+	x - job page
 	- filtering
-	- buttons that do things
-	- saved jobs page
-	- actions for saving & applying to jobs
-
+	>- buttons that do things
+	- saved jobs page OR the bottom stuff
+	>- actions for saving & (change the text) applying to jobs
+		>- button for job you have applied to
 recruiter
-	- post to multiple universities
+	x - post to multiple universities
 	- filters
 	- make sure can edit job
 	- applicants for a job
 	- applicants for a specific job
 	- saved drafts page
-	- actions for contacting a person
+	- buttons > actions for contacting a person

@@ -9,6 +9,11 @@
 
 {% block jobcards %}
 	<h2>JOBS POSTED TO YOUR UNIVERSITY:</h2>
+	<div class="applycase">
+		
+		Apply to selected
+		Apply all
+	</div>
 	{% if jobs %}
 		{% for job in jobs %}
 			<div class="jobPost">
@@ -16,7 +21,7 @@
 			        <ul>
 			            <li id="jobActions"><input type="checkbox" name="" value=""><br></li>
 			            <li id="jobActions"><a href=""></a><img id="deleteBtn" src="../static/resources/deleteBtn.png" width="15px" height="15px"></li>
-			            <li id="jobActions"><a href=""><a/><img id="saveBtn" src="../static/resources/favorite.png" width="15px" height="15px"></li>
+			            <li id="jobActions"><a href="{{ url_for('save_job') }}?userid={{ session.user.id }}&jobid={{ job.id }}"><a/><img id="saveBtn" src="../static/resources/favorite.png" width="15px" height="15px"></li>
 			        </ul>
 			    </form>
 			    <div id="jobCard" style="display:inline-block">
@@ -41,7 +46,7 @@
 			            {{ job.job_description }}
 			        </div>
 			        <div id="jobOptions">
-			            <a href="{{ url_for('save_job') }}?userid={{ session.user.id }}&jobid={{ job.id }}"><img id="apply" src="../static/resources/apply_with_linkedin.png"></a>
+			            <a href="{{ url_for('apply_job') }}?userid={{ session.user.id }}&jobid={{ job.id }}"><img id="apply" src="../static/resources/apply_with_linkedin.png"></a>
 			        </div>
 			    </div>
 			</div>

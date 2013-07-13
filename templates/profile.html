@@ -19,11 +19,12 @@
                 <li> {{ key }}: {{ value }} </li>
             {% endfor %}
             <a href="{{ url_for('save_job') }}?userid={{ session.user.id }}&jobid={{ job.id }}">Click here to save this job</a>
+            <a href="{{ url_for('apply_job') }}?userid={{ session.user.id }}&jobid={{ job.id }}">Click here to apply for job</a>
         {% endfor %}
     {% endif %}
 
     {% if saved %}
-        <h3>Jobs you've applied to:</h3>
+        <h3>Jobs you've saved/applied to:</h3>
         {% for job in saved %}
             {% for key, value in job.iteritems() %}
                 <li> {{ key }}: {{ value }} </li>
