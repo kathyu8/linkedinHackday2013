@@ -1,0 +1,24 @@
+Company:
+
+LinkedIn
+
+Application Name:
+
+UniSymplicity
+
+API Key:
+
+dkqwsero67sh
+
+Secret Key:
+
+GGxpjoa5b5NFCOxU
+
+OAuth User Token:
+
+d3eacf4f-1351-42e7-a0da-3987d8cbc56e
+
+OAuth User Secret:
+
+5d4e16fa-f96b-47fb-8695-5befeb01bd7ee
+
