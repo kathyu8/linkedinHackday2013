@@ -25,6 +25,9 @@
             {% for key, value in student.iteritems() %}
                 <li>{{ key }}: {{ value }}</li>
             {% endfor %}
+                <script src="//platform.linkedin.com/in.js" type="text/javascript"></script>
+                <script type="IN/MemberProfile" data-id="{{ student.public_profile_url }}" data-format="inline"></script>
+                <a href="{{ url_for('contact_student') }}?sid={{ student.id }}">Click here to contact this student</a>
             </ul>
         {% endfor %}   
     {% endif %}

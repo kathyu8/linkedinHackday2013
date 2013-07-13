@@ -10,4 +10,5 @@ def get_student_profile(content):
     user['first_name'] = data['firstName']
     user['last_name'] = data['lastName']
     user['picture'] = data['pictureUrl']
+    user['public_profile_url'] = data['publicProfileUrl']
     return user
