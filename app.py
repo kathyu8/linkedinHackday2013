@@ -64,16 +64,12 @@ class Jobposting(db.Model):
     company_description = db.Column(db.Text, nullable=False)
     industry = db.Column(db.Text, nullable=False)
     job_title = db.Column(db.Text, nullable=False)
-    experience = db.Column(db.Text, nullable=False)
-    employment_type = db.Column(db.Text, nullable=False)
     job_description = db.Column(db.Text, nullable=False)
     desired_skills = db.Column(db.Text, nullable=False)
     year = db.Column(db.Text, nullable=False)
     university = db.Column(db.Text, nullable=False)
-    tags = db.Column(db.Text, nullable=False)
     location = db.Column(db.Text, nullable=False)
     date = db.Column(db.Text, nullable=False)
-
 
     def to_dict(self):
         return {
@@ -82,29 +78,23 @@ class Jobposting(db.Model):
             'company_description': self.company_description,
             'industry': self.industry,
             'job_title': self.job_title,
-            'experience': self.experience,
-            'employment_type': self.employment_type,
             'job_description': self.job_description,
             'desired_skills': self.desired_skills,
             'year': self.year,
             'university': self.university,
-            'tags': self.tags,
             'location': self.location,
             'date': self.date,
         }
 
-    def __init__(self, company=None, company_description=None, industry=None, job_title=None, experience=None, employment_type=None, job_description=None, desired_skills=None, university=None, tags=None, year=None, userid=None, location=None, date=None):
+    def __init__(self, company=None, company_description=None, industry=None, job_title=None, job_description=None, desired_skills=None, university=None, year=None, userid=None, location=None, date=None):
         self.company = company
         self.company_description = company_description
         self.industry = industry
         self.job_title = job_title
-        self.experience = experience
-        self.employment_type = employment_type
         self.desired_skills = desired_skills
         self.job_description = job_description
         self.university = university
         self.year = year
-        self.tags = tags
         self.userid = userid
         self.location = location
         self.date = date
@@ -241,12 +231,9 @@ def post_job():
             company_description=request.form['company_description'],
             industry=request.form['industry'],
             job_title=request.form['job_title'],
-            experience=request.form['experience'],
-            employment_type=request.form['employment_type'],
             job_description=request.form['job_description'],
             desired_skills=request.form['desired_skills'],
             university=request.form['university'],
-            tags=request.form['tags'],
             location=request.form['location'],
             date=request.form['date'],
             year=request.form['year'])
