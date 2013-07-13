@@ -179,6 +179,9 @@ def logout():
 def dashboard():
     return render_template('index.html')
 
+@app.route('/recruiter')
+def recruiterTemplate():
+    return render_template('recruiter_stream_job_card.html')
 
 @app.route('/postjob', methods=['GET', 'POST'])
 def post_job():

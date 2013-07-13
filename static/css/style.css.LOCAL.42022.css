@@ -17,6 +17,10 @@ form{
 	vertical-align: top;
 }
 
+img:hover{
+	border-radius: 6px;
+}
+
 /* HEADER */
 
 #top-header {
@@ -58,7 +62,8 @@ form{
 	background-image: linear-gradient(top, #1a1a1a 0%,#303030 100%);
 	z-index: 1;
 	height: 29px;
-	position: relative;
+	position: static;
+	width: auto;
 }
 
 #nav-links {
@@ -99,6 +104,10 @@ form{
 
 /* JOB CARD */
 
+#jobHeader{
+	padding-left: 10px;
+}
+
 .title{
 	font-size: 25px;
 	vertical-align: top;
@@ -125,10 +134,6 @@ hr {
 border: 0; border-top: 1px solid #ccc;
 }
 
-#companyLogo {
-	margin-right: 10px;
-}
-
 #location, #date{
 	color: grey;
 	font-size: 10px;
@@ -147,41 +152,23 @@ border: 0; border-top: 1px solid #ccc;
 	right: 10px;
 }
 
-#universities {
+#jobOptions{
 	position: absolute;
-	left: 8px;
-	bottom: 8px;
-	font-size: 15px;
-}
-
-#applicants {
-	position: absolute;
-	right: 8px;
-	bottom: 8px;
-	font-size: 15px;
+	bottom: 5px;
+	right: 2px;
 }
 
 #jobActions {
 	margin-top: 5px;
 }
 
-#jobActions > li {
-	margin-bottom: 5px;
-}
-
 #apply {
-	margin-top: 15px;*/
-	position: absolute;
-	bottom: 5px;
-	right: 2px;
+	margin-right: 5px;
+	margin-top: 15px;
 }
 
-#deleteBtn, #editBtn, #deleteBtn {
-	opacity: 0.5;
-}
-
-#saveBtn:hover, #editBtn:hover, #deleteBtn:hover {
-	opacity: 1;
+#saveBtn:hover {
+	src: "../static/resources/starOutline.png";
 }
 
 /* CONTAINER */
@@ -264,5 +251,4 @@ border: 0; border-top: 1px solid #ccc;
 	right: 5px;
 	top: 0px;
 	float: right;
-	background-position: 0 0;
 }

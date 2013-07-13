@@ -58,7 +58,8 @@ form{
 	background-image: linear-gradient(top, #1a1a1a 0%,#303030 100%);
 	z-index: 1;
 	height: 29px;
-	position: relative;
+	position: static;
+	width: auto;
 }
 
 #nav-links {
@@ -99,6 +100,10 @@ form{
 
 /* JOB CARD */
 
+#companyLogo {
+	margin-left: 10px;
+}
+
 .title{
 	font-size: 25px;
 	vertical-align: top;
@@ -125,10 +130,6 @@ hr {
 border: 0; border-top: 1px solid #ccc;
 }
 
-#companyLogo {
-	margin-right: 10px;
-}
-
 #location, #date{
 	color: grey;
 	font-size: 10px;
@@ -139,6 +140,11 @@ border: 0; border-top: 1px solid #ccc;
 	color: grey;
 }
 
+#applicants, #universities {
+	margin-right: 10px;
+	font-size: 12px;
+}
+
 .year{
 	position: absolute;
 	color: grey;
@@ -147,40 +153,37 @@ border: 0; border-top: 1px solid #ccc;
 	right: 10px;
 }
 
-#universities {
+#JobExtInfo {
 	position: absolute;
-	left: 8px;
-	bottom: 8px;
-	font-size: 15px;
-}
-
-#applicants {
-	position: absolute;
-	right: 8px;
-	bottom: 8px;
-	font-size: 15px;
-}
-
-#jobActions {
-	margin-top: 5px;
+	left: 10px;
+	bottom: 10px;
 }
 
 #jobActions > li {
-	margin-bottom: 5px;
+	margin-top: 5px;
 }
 
 #apply {
-	margin-top: 15px;*/
+	margin-right: 5px;
+	margin-top: 15px;
 	position: absolute;
-	bottom: 5px;
+	bottom: 7px;
 	right: 2px;
 }
 
-#deleteBtn, #editBtn, #deleteBtn {
+#deleteBtn:hover {
+	opacity: 1;
+}
+
+#deleteBtn: {
 	opacity: 0.5;
 }
 
-#saveBtn:hover, #editBtn:hover, #deleteBtn:hover {
+#saveBtn, #editBtn {
+	opacity: 0.5;
+}
+
+#saveBtn:hover, #editBtn:hover {
 	opacity: 1;
 }
 
@@ -264,5 +267,4 @@ border: 0; border-top: 1px solid #ccc;
 	right: 5px;
 	top: 0px;
 	float: right;
-	background-position: 0 0;
 }
