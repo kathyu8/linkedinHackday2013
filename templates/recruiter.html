@@ -5,5 +5,17 @@
 <body>
     <a href="{{ url_for('post_job') }}">Post a new job</a>
     <a href="{{ url_for('logout') }}">Click here to logout</a>
+
+    {% if jobs %}
+        <h2>Jobs!</h2>
+        {% for job in jobs %}
+            <ul>
+            {% for key, value in job.iteritems() %}
+                <li>{{ key }}: {{ value }}</li>
+            {% endfor %}
+            </ul>
+        {% endfor %}
+    {% endif %}
+
 </body>
 </html>
