@@ -33,6 +33,10 @@ def logout():
     session.pop('access_token', None)
     return redirect(url_for('index'))
 
+@app.route('/index')
+def dashboard():
+    return render_template('index.html')
+
 app.secret_key = '\xf8\x98\x80\xea\xde\xad\x9d\xf9\x90\xf58\x19\x062\x13]&f\x90\xb6Q\x1b\xf6\xb8'
 
 if __name__ == "__main__":
