@@ -313,3 +313,7 @@ border: 0; border-top: 1px solid #ccc;
   	-webkit-border-radius: 7px;
 	width: 150px;
 }
+
+#school-img {
+	text-align: center;
+}
