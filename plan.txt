@@ -1,0 +1,64 @@
+/* Student */
+Job Card Template
+	- Stream
+		- Company Name and Logo
+		- Title
+		- Location
+		- Year
+		- Tiny Description 
+		- Apply BUttone
+		- Checkbox
+		- Star Saved Button
+	- Saved 
+		- Delete Button
+
+Filter Template
+	- Checkbox
+	- Drop-down Menu
+
+/* Recruiter */
+Job Card Template
+	- Stream
+		- Title
+		- Location
+		- Num of applicants
+		- Year
+		- Date posted
+		- Univeristy(s)
+	- Saved
+		- Edit
+		- Post
+		- Delete
+
+Filter Template
+	- University
+		- Checkbox 
+		- Text
+	- Jobs
+		- Checkbox
+		- Drop-down Menu			
+
+Profile Summary Template
+	- Contact
+	- Interview
+	- Linkedin Profile
+
+/* Shared */
+Website header
+	- INviersity logo
+	- search bar
+	- Logout button
+	- Profile Image
+Links
+	- Recruiter 
+		- Post 
+		- Save Draft
+Side Bar
+	- Notifcaionts
+	- Filters
+	- Student
+		- Saved Jobs
+	- Recruiter
+		- Saved Drafts
+Stream Body
+
