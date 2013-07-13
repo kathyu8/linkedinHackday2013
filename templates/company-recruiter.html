@@ -1,9 +1,9 @@
 {% extends 'dashboard.html' %}
 
 {% block navlinks %}
-    <li class="nav-item"><a href="/index">Home</a></li>
+    <li class="nav-item"><a href="/recruiter_profile">Home</a></li>
     <li class="nav-item"><a href="/editpost">Post Job</a></li>
-    <li class="nav-item"><a href="/saveddrafts">Saved Drafts</a></li>
+    <li class="nav-item"><a href="/applicants">Job Applicants</a></li>
 {% endblock %}
 
 <!-- STREAM -->
@@ -62,8 +62,7 @@
 
 {% block notifications %}
 	<ul>
-	    <li>Here is a notification</li>
-	    <li>More notification</li>
+	    <li>You have no notifications.
 	</ul>
 {% endblock %}
 
@@ -74,7 +73,7 @@
         <option value="jobfn1">Marketing</option>
     </select>
     <br/>
-    <input type="checkbox"> <span>University:</span>
+    <input type="checkbox" id="university"> <span>University:</span>
     <select>
         <option value="ind0">University of Pennsylvania</option>
         <option value="ind1">Carnegie Mellon University</option>
@@ -88,6 +87,7 @@
 {% endblock %}
 
 {% block savedjobs %}
+    <h2>POSTED JOBS</h2>
     <div class="summary-block">
         <!-- use company logo here -->
         <a href="http://www.linkedin.com"><img src="http://placehold.it/25x25"></a>

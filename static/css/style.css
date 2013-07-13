@@ -299,9 +299,8 @@ border: 0; border-top: 1px solid #ccc;
 	background-color: #0077b5;
 	color: white;
 	padding: 5px;
-	-moz-border-radius: 10px;
-  	-webkit-border-radius: 15px;
-	padding: 5px;
+	-moz-border-radius: 5px;
+  	-webkit-border-radius: 7px;
 	width: 150px;
 }
 
@@ -310,8 +309,7 @@ border: 0; border-top: 1px solid #ccc;
 	background-color: #659EC7;
 	color: white;
 	padding: 5px;
-	-moz-border-radius: 10px;
-  	-webkit-border-radius: 15px;
-	padding: 5px;
+	-moz-border-radius: 5px;
+  	-webkit-border-radius: 7px;
 	width: 150px;
 }

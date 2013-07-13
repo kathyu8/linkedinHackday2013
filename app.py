@@ -206,6 +206,7 @@ def recruiter_profile():
 
     return render_template('company-recruiter.html', jobs=jobs, students=students)
 
+
 @app.route("/applicants")
 def applicants():
     token = session['access_token']
@@ -238,6 +239,7 @@ def applicants():
                 students.append(s.to_dict())
 
     return render_template('applicants.html', jobs=jobs, students=students)
+
 
 @app.route('/logout')
 def logout():
@@ -281,7 +283,6 @@ def student_test():
 @app.route('/company-recruiter')
 def recruiter_dashboard():
     return render_template('company-recruiter.html')
-
 
 @app.route('/recruiter')
 def recruiterTemplate():
