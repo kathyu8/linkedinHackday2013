@@ -1,8 +1,40 @@
 import requests
-import json
+from api import *
 
 from flask import Flask, render_template, request, session, redirect, url_for
+from flask.ext.sqlalchemy import SQLAlchemy
+
 app = Flask(__name__)
+app.debug = True
+app.config['SQLALCHEMY_DATABASE_URI'] = 'sqlite:////tmp/test.db'
+db = SQLAlchemy(app)
+
+
+saved_jobs = db.Table('saved_jobs',
+    db.Column('user.id', db.Integer, db.ForeignKey('user.id')),
+    db.Column('jobposting.id', db.Integer, db.ForeignKey('jobposting.id'))
+)
+
+
+class User(db.Model):
+    id = db.Column(db.Integer, primary_key=True)
+    access_token = db.Column(db.Text)
+    email = db.Column(db.Text)
+    expires_in = db.Column(db.DateTime)
+    saved_jobs = db.relationship('JobPosting', secondary='saved_jobs', backref=db.backref('pages', lazy='dynamic'))
+
+
+class Jobposting(db.Model):
+    id = db.Column(db.Integer, primary_key=True)
+    company = db.Column(db.Text, nullable=False)
+    company_description = db.Column(db.Text, nullable=False)
+    industry = db.Column(db.Text, nullable=False)
+    job_title = db.Column(db.Text, nullable=False)
+    experience = db.Column(db.Text, nullable=False)
+    employment_type = db.Column(db.Text, nullable=False)
+    desired_skills = db.Column(db.Text, nullable=False)
+    job_description = db.Column(db.Text, nullable=False)
+    university = db.Column(db.Text, nullable=False)
 
 
 @app.route("/")
@@ -16,17 +48,25 @@ def index():
 def hola():
     code = request.args.get('code')
     redirect_uri = "http://localhost:5000/hola"
-    r = requests.get('https://www.linkedin.com/uas/oauth2/accessToken?grant_type=authorization_code&code='+code+'&redirect_uri='+redirect_uri+'&client_id=dkqwsero67sh&client_secret=GGxpjoa5b5NFCOxU')
-    response = json.loads(r.content)
-    session['access_token'] = response['access_token']
+    token = api.get_access_token(code=code, redirect_uri=redirect_uri)
+    session['access_token'] = token
     return redirect(url_for('profile'))
 
 
 @app.route("/profile")
-def profile():
+def student_profile():
     token = session['access_token']
-    profile = requests.get('https://api.linkedin.com/v1/people/~:(first-name,last-name,email-address,summary,specialties,positions,picture-url,skills)?format=json&oauth2_access_token='+token)
-    return render_template('profile.html')
+    profile = requests.get('https://api.linkedin.com/v1/people/~:(first-name,last-name,email-address,summary,specialties,positions,picture-url,skills,educations)?format=json&oauth2_access_token='+token)
+    job = {
+        'company': 'linkedin',
+        'job_title': 'Software Engineer Intern',
+        'desired_skills': 'C++, Git',
+        'job_description': 'Looking for a summer intern to do some work.',
+        'university': 'CMU'
+    }
+    user = get_student_profile(profile.content)
+    return render_template('profile.html', user=user, job=job)
+
 
 @app.route('/logout')
 def logout():

@@ -3,7 +3,22 @@
     <title>Profile</title>
 </head>
 <body>
+    <img src="{{ user.picture }}">
+    <h3> Hi {{ user.first_name }} </h3>
     <a href="/logout">Click here to logout</a>
-    {{ user }}
+    <p>This is your info:
+        <ul>
+        {% for key, value in user.iteritems() %}
+            <li> {{ key }}: {{ value }} </li>
+        {% endfor %}
+        </ul>
+    </p>
+    <p>A job for you
+        <ul>
+        {% for key, value in job.iteritems() %}
+            <li> {{ key }}: {{ value }} </li>
+        {% endfor %}
+        </ul>
+    </p>
 </body>
 </html>
