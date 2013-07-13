@@ -25,11 +25,15 @@ class User(db.Model):
     email = db.Column(db.Text, unique=True)
     jobs = db.relationship('Jobposting', secondary=saved_jobs, backref=db.backref('jobposting', lazy='dynamic'))
 
+    def __init__(self, access_token=None, email=None):
+        self.access_token = access_token
+        self.email = email
+
     def __repr__(self):
-        return u'%s' % (self.email)
+        return '<User %r Email: %s>' % (self.id, self.email)
 
 
-class JobPosting(db.Model):
+class Jobposting(db.Model):
     id = db.Column(db.Integer, primary_key=True)
     company = db.Column(db.Text, nullable=False)
     company_description = db.Column(db.Text, nullable=False)
@@ -54,20 +58,6 @@ class JobPosting(db.Model):
 
     def __repr__(self):
         return '<JobPosting %r>' % self.id
-
-
-class User(db.Model):
-    id = db.Column(db.Integer, primary_key=True)
-    access_token = db.Column(db.Text)
-    email = db.Column(db.Text)
-    expires_in = db.Column(db.DateTime)
-
-    def __init__(self, access_token=None, email=None):
-        self.access_token = access_token
-        self.email = email
-
-    def __repr__(self):
-        return '<User %r>' % self.id
 
 
 @app.route("/")
