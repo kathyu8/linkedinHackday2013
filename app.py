@@ -29,6 +29,7 @@ class User(db.Model):
     access_token = db.Column(db.Text)
     email = db.Column(db.Text, unique=True)
     recruiter = db.Column(db.Boolean)
+    picture = db.Column(db.Text)
 
     def to_dict(self):
         return {
@@ -36,12 +37,14 @@ class User(db.Model):
             'access_token': self.access_token,
             'email': self.email,
             'recruiter': self.recruiter,
+            'picture': self.picture,
         }
 
-    def __init__(self, access_token=None, email=None, recruiter=None):
+    def __init__(self, access_token=None, email=None, recruiter=None, picture=None):
         self.access_token = access_token
         self.email = email
         self.recruiter = recruiter
+        self.picture = picture
 
     def __repr__(self):
         return '<User %r Email: %s>' % (self.id, self.email)
@@ -134,7 +137,7 @@ def student_profile():
 
     # Save user to db if not already there
     if not me:
-        newuser = User(access_token=token, email=user['email'], recruiter=False)
+        newuser = User(access_token=token, email=user['email'], recruiter=False, picture=user['picture'])
         db.session.add(newuser)
         db.session.commit()
         session['user'] = newuser.to_dict()
@@ -192,13 +195,16 @@ def logout():
 def student_dashboard():
     return render_template('student.html')
 
+
 @app.route('/company-recruiter')
 def recruiter_dashboard():
     return render_template('company-recruiter.html')
 
+
 @app.route('/editpost')
 def edit_post():
     return render_template('edit_post.html')
+
 
 @app.route('/postjob', methods=['GET', 'POST'])
 def post_job():
@@ -218,6 +224,7 @@ def post_job():
             year=request.form['year'])
         db.session.add(jobpost)
         db.session.commit()
+        return redirect(url_for('recruiter_profile'))
     return render_template('postjob.html')
 
 
