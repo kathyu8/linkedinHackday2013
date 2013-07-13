@@ -206,6 +206,7 @@ def recruiter_profile():
 
     return render_template('company-recruiter.html', jobs=jobs, students=students)
 
+
 @app.route("/applicants")
 def applicants():
     token = session['access_token']
@@ -239,20 +240,11 @@ def applicants():
 
     return render_template('applicants.html', jobs=jobs, students=students)
 
+
 @app.route('/logout')
 def logout():
     session.pop('access_token', None)
     return redirect(url_for('index'))
-
-
-@app.route('/student')
-def student_dashboard():
-    return render_template('student.html')
-
-
-@app.route('/company-recruiter')
-def recruiter_dashboard():
-    return render_template('company-recruiter.html')
 
 
 @app.route('/recruiter')
