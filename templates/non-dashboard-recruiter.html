@@ -1,0 +1,41 @@
+{% extends 'base.html' %}
+
+{% block stream %}
+    <div id="stream-header">
+        {% block streamheader %}
+        {% endblock %}
+    </div>
+    <div id="jobcards">
+        {% block jobcards %}
+        {% endblock %}
+    </div>
+{% endblock %}
+
+{% block sidebar %}
+	<div id="notifications" class="sidebar-item">
+	    <h2>NOTIFICATIONS</h2>
+	    {% block notifications %}
+	    {% endblock %}
+	</div>
+	<div id="saved-jobs" style: "padding-bottom: 10px">
+
+    <h2>JOBS YOU POSTED</h2>
+    {% for job in jobs %}
+	    <div class="summary-block">
+	        <!-- use company logo here -->
+	        <a href="http://www.linkedin.com"><img src="http://placehold.it/25x25"></a>
+	        <div class="summary-title-block">
+	            <p class="job-title">
+	                {{ job.job_title }}
+	            </p>
+	            <p class="company">
+	                {{ job.date }}
+	            </p>
+	            <div class="summary-title-block-delete">
+	                <a href="/delete-saved"><img src="../static/resources/delete.png" width="15px" height="15px"></a>
+	            </div>
+	        </div>
+	    </div>
+    {% endfor %}
+
+{% endblock %}
