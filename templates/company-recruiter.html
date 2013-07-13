@@ -1,5 +1,11 @@
 {% extends 'dashboard.html' %}
 
+{% block navlinks %}
+    <li class="nav-item"><a href="/index">Home</a></li>
+    <li class="nav-item"><a href="/postjob">Post Job</a></li>
+    <li class="nav-item"><a href="/saveddrafts">Saved Drafts</a></li>
+{% endblock %}
+
 <!-- STREAM -->
 
 {% block streamheader %}
@@ -24,8 +30,8 @@
 		                <div id="jobHeader" style="display:inline-block">
 		                    <span class="title" id="jobTitle">{{ job.job_title }}</span>
 		                    <div id="locationAndDate">
-		                        <span id="location">Mountain View, CA | </span>
-		                        <span id="date"> Posted March 13th, 2013</span>
+		                        <span id="location">{{ job.location }} | </span>
+		                        <span id="date"> Deadline: {{ job.date }}</span>
 		                    </div>
 		                </div>
 		            </div>
@@ -39,7 +45,11 @@
 		            <div id="jobOptions">
 		            	<div id="jobExtInfo">
 		            		<div id="universities" style="display:inline-block;">{{ job.university }}</div>
-				        	<a href="" id="applicants" style="display:inline-block;">45 Applicants Applied</a>
+		            		{% if students %}
+				        	<a href="" id="applicants" style="display:inline-block;">{{ students|length }} Applicants Applied</a>
+				        	{% else %}
+				        	<a href="" id="applicants" style="display:inline-block;">0 Applicants Applied</a>
+		            		{% endif %}
 		            	</div> 
 		            </div>
 		        </div>
