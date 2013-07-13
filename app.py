@@ -2,7 +2,7 @@
 import requests
 from api import *
 
-from flask import Flask, render_template, request, session, redirect, url_for, abort, flash
+from flask import Flask, render_template, request, session, redirect, url_for
 from flask.ext.sqlalchemy import SQLAlchemy
 
 app = Flask(__name__)
@@ -112,15 +112,15 @@ def dashboard():
 def post_job():
     if request.method == 'POST':
         jobpost = JobPosting(
-            company = request.form['company'],
-            company_description = request.form['company_discription'],
-            industry = request.form['industry'],
-            job_title = request.form['job_title'],
-            experience = request.form['experience'],
-            employment_type = request.form['employment_type'],
-            job_description = request.form['job_description'],
-            desired_skills = request.form['desired_skills'],
-            university = request.form['university'])
+            company=request.form['company'],
+            company_description=request.form['company_description'],
+            industry=request.form['industry'],
+            job_title=request.form['job_title'],
+            experience=request.form['experience'],
+            employment_type=request.form['employment_type'],
+            job_description=request.form['job_description'],
+            desired_skills=request.form['desired_skills'],
+            university=request.form['university'])
         db.session.add(jobpost)
         db.session.commit()
     return render_template('postjob.html')
