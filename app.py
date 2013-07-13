@@ -49,6 +49,7 @@ class User(db.Model):
 
 class Jobposting(db.Model):
     id = db.Column(db.Integer, primary_key=True)
+    userid = db.Column(db.Integer, db.ForeignKey('user.id'))
     company = db.Column(db.Text, nullable=False)
     company_description = db.Column(db.Text, nullable=False)
     industry = db.Column(db.Text, nullable=False)
@@ -60,6 +61,7 @@ class Jobposting(db.Model):
     year = db.Column(db.Text, nullable=False)
     university = db.Column(db.Text, nullable=False)
     tags = db.Column(db.Text, nullable=False)
+
 
     def to_dict(self):
         return {
@@ -77,7 +79,7 @@ class Jobposting(db.Model):
             'tags': self.tags
         }
 
-    def __init__(self, company=None, company_description=None, industry=None, job_title=None, experience=None, employment_type=None, job_description=None, desired_skills=None, university=None, tags=None, year=None):
+    def __init__(self, company=None, company_description=None, industry=None, job_title=None, experience=None, employment_type=None, job_description=None, desired_skills=None, university=None, tags=None, year=None, userid=None):
         self.company = company
         self.company_description = company_description
         self.industry = industry
@@ -89,9 +91,10 @@ class Jobposting(db.Model):
         self.university = university
         self.year = year
         self.tags = tags
+        self.userid = userid
 
     def __repr__(self):
-        return self.to_dict()
+        return u'<Job Posting: %r>' % self.id
 
 
 @app.route("/")
@@ -144,7 +147,13 @@ def student_profile():
     jobs = []
     for item in query:
         jobs.append(item.to_dict())
-    return render_template('profile.html', jobs=jobs)
+
+    query2 = Savedjobs.query.filter_by(userid=session['user']['id'])
+    saved = []
+    for item in query2:
+        job = Jobposting.query.filter_by(id=item.jobid).one()
+        saved.append(job.to_dict())
+    return render_template('profile.html', jobs=jobs, saved=saved)
 
 
 @app.route("/recruiter_profile")
@@ -165,8 +174,12 @@ def recruiter_profile():
         session['user'] = me.to_dict()
 
     # Get info relevant to recruiter
-    # HERE!
-    return render_template('recruiter.html')
+    query = Jobposting.query.filter_by(userid=session['user']['id'])
+    jobs = []
+    for item in query:
+        jobs.append(item.to_dict())
+
+    return render_template('recruiter.html', jobs=jobs)
 
 
 @app.route('/logout')
@@ -175,18 +188,27 @@ def logout():
     return redirect(url_for('index'))
 
 
-@app.route('/index')
-def dashboard():
-    return render_template('index.html')
+@app.route('/student')
+def student_dashboard():
+    return render_template('student.html')
+
+@app.route('/company-recruiter')
+def recruiter_dashboard():
+    return render_template('company-recruiter.html')
 
 @app.route('/recruiter')
 def recruiterTemplate():
     return render_template('recruiter_stream_job_card.html')
 
+@app.route('/editpost')
+def edit_post():
+    return render_template('edit_post.html')
+
 @app.route('/postjob', methods=['GET', 'POST'])
 def post_job():
     if request.method == 'POST':
         jobpost = Jobposting(
+            userid=session['user']['id'],
             company=request.form['company'],
             company_description=request.form['company_description'],
             industry=request.form['industry'],

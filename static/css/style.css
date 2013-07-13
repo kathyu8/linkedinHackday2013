@@ -182,7 +182,6 @@ border: 0; border-top: 1px solid #ccc;
 
 #saveBtn:hover, #editBtn:hover, #deleteBtn:hover {
 	opacity: 1;
-}
 
 /* CONTAINER */
 
@@ -209,6 +208,7 @@ border: 0; border-top: 1px solid #ccc;
 }
 
 #sidebar {
+	display: inline-block;
     float: right;
     width: 280px;
     border-left: solid 1px #ccc;

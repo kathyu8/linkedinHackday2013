@@ -1,0 +1,30 @@
+{% extends 'base.html' %}
+
+{% block stream %}
+    <div id="stream-header">
+        {% block streamheader %}
+        {% endblock %}
+    </div>
+    <div id="jobcards">
+        {% block jobcards %}
+        {% endblock %}
+    </div>
+{% endblock %}
+
+{% block sidebar %}
+	<div id="notifications" class="sidebar-item">
+	    <h2>NOTIFICATIONS</h2>
+	    {% block notifications %}
+	    {% endblock %}
+	</div>
+	<div id="filters" class="sidebar-item">
+	    <h2>FILTERS</h2>
+	    {% block filters %}
+	    {% endblock %}
+	</div>
+	<div id="saved-jobs" style: "padding-bottom: 10px">
+	    <h2>SAVED JOBS</h2>
+	    {% block savedjobs %}
+	    {% endblock %}
+	</div>
+{% endblock %}
