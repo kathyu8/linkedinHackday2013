@@ -12,8 +12,8 @@
                 <a href="http://www.linkedin.com/" class="logo" id="in-logo">LinkedIn</a>
                 <div id="user-dock">
                     <!-- this link will go to their linkedin profile -->
-                    <a href="/logout">Logout</a>
-                    <a href="http://www.linkedin.com"><img src="http://placehold.it/25x25"></a>
+                    <a href="{{ url_for('logout') }}">Logout</a>
+                    <a href="http://www.linkedin.com"><img src="{{ session.user.picture }}"width="25px" height="25px"></a>
                 </div>
             </div>
         </div>

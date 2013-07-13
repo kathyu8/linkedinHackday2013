@@ -156,7 +156,7 @@ def student_profile():
     for item in query2:
         job = Jobposting.query.filter_by(id=item.jobid).one()
         saved.append(job.to_dict())
-    return render_template('profile.html', jobs=jobs, saved=saved)
+    return render_template('student.html', jobs=jobs, saved=saved)
 
 
 @app.route("/recruiter_profile")
@@ -182,7 +182,7 @@ def recruiter_profile():
     for item in query:
         jobs.append(item.to_dict())
 
-    return render_template('recruiter.html', jobs=jobs)
+    return render_template('company-recruiter.html', jobs=jobs)
 
 
 @app.route('/logout')

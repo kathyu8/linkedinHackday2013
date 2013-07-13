@@ -114,6 +114,7 @@ form{
 	position: relative;
 	padding: 10px;
 	box-shadow: 3px 3px 5px #cdc9c9;
+	margin-bottom: 15px;
 }
 
 #jobDescription{
@@ -183,6 +184,7 @@ border: 0; border-top: 1px solid #ccc;
 #saveBtn:hover, #editBtn:hover, #deleteBtn:hover {
 	opacity: 1;
 
+}
 /* CONTAINER */
 
 #container {
@@ -194,6 +196,7 @@ border: 0; border-top: 1px solid #ccc;
 	margin-right: auto;
 	font-size: 13px;
 	overflow: auto;
+	min-height:100%;
 }
 
 #container h2 {
