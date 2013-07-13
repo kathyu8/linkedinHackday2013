@@ -25,6 +25,7 @@
             {% for key, value in student.iteritems() %}
                 <li>{{ key }}: {{ value }}</li>
             {% endfor %}
+                <a href="{{ url_for('contact_student') }}?sid={{ student.id }}">Click here to contact this student</a>
             </ul>
         {% endfor %}   
     {% endif %}

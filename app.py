@@ -259,6 +259,11 @@ def save_job():
     return redirect(url_for('student_profile'))
 
 
+@app.route('/contact_student')
+def contact_student():
+    return('sueno.html')
+
+
 app.secret_key = '\xf8\x98\x80\xea\xde\xad\x9d\xf9\x90\xf58\x19\x062\x13]&f\x90\xb6Q\x1b\xf6\xb8'
 
 if __name__ == '__main__':
