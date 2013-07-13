@@ -9,6 +9,16 @@ body {
 	border: 0;
 	outline: 0;
 	display: block;
+	background-color: white;
+}
+
+form{
+	margin-left: 10px;
+	vertical-align: top;
+}
+
+img:hover{
+	border-radius: 6px;
 }
 
 #top-header {
@@ -52,4 +62,65 @@ body {
 	height: 34px;
 	width: 43px;
 	float: left;
+}
+
+#jobHeader{
+	padding-left: 10px;
+}
+
+.title{
+	font-size: 40px;
+	vertical-align: top;
+}
+
+#jobCard{
+	background-color: #f8f5e1;
+	z-index: 1;
+	border-radius: 5px;
+	height: 180px;
+	width: 600px;
+	position: relative;
+	padding: 10px;
+	box-shadow: 3px 3px 3px #cdc9c9;
+}
+
+#jobDescription{
+	font-size: 13px;
+}
+
+#location, #date{
+	color: grey;
+	font-size: 10px;
+}
+
+#companyName {
+	font-size: 15px;
+	color: grey;
+}
+
+.year{
+	position: absolute;
+	color: grey;
+	font-size: 12px;
+	top: 8px;
+	right: 10px;
+}
+
+#jobOptions{
+	position: absolute;
+	bottom: 5px;
+	right: 2px;
+}
+
+#jobActions {
+	margin-top: 5px;
+}
+
+#apply {
+	margin-right: 5px;
+	margin-top: 15px;
+}
+
+#saveBtn:hover {
+	src: "../static/resources/starOutline.png";
 }
