@@ -29,6 +29,7 @@ class User(db.Model):
     access_token = db.Column(db.Text)
     email = db.Column(db.Text, unique=True)
     recruiter = db.Column(db.Boolean)
+    picture = db.Column(db.Text)
 
     def to_dict(self):
         return {
@@ -36,12 +37,14 @@ class User(db.Model):
             'access_token': self.access_token,
             'email': self.email,
             'recruiter': self.recruiter,
+            'picture': self.picture,
         }
 
-    def __init__(self, access_token=None, email=None, recruiter=None):
+    def __init__(self, access_token=None, email=None, recruiter=None, picture=None):
         self.access_token = access_token
         self.email = email
         self.recruiter = recruiter
+        self.picture = picture
 
     def __repr__(self):
         return '<User %r Email: %s>' % (self.id, self.email)
@@ -61,6 +64,8 @@ class Jobposting(db.Model):
     year = db.Column(db.Text, nullable=False)
     university = db.Column(db.Text, nullable=False)
     tags = db.Column(db.Text, nullable=False)
+    location = db.Column(db.Text, nullable=False)
+    date = db.Column(db.Text, nullable=False)
 
 
     def to_dict(self):
@@ -76,10 +81,12 @@ class Jobposting(db.Model):
             'desired_skills': self.desired_skills,
             'year': self.year,
             'university': self.university,
-            'tags': self.tags
+            'tags': self.tags,
+            'location': self.location,
+            'date': self.date,
         }
 
-    def __init__(self, company=None, company_description=None, industry=None, job_title=None, experience=None, employment_type=None, job_description=None, desired_skills=None, university=None, tags=None, year=None, userid=None):
+    def __init__(self, company=None, company_description=None, industry=None, job_title=None, experience=None, employment_type=None, job_description=None, desired_skills=None, university=None, tags=None, year=None, userid=None, location=None, date=None):
         self.company = company
         self.company_description = company_description
         self.industry = industry
@@ -92,6 +99,8 @@ class Jobposting(db.Model):
         self.year = year
         self.tags = tags
         self.userid = userid
+        self.location = location
+        self.date = date
 
     def __repr__(self):
         return u'<Job Posting: %r>' % self.id
@@ -134,7 +143,7 @@ def student_profile():
 
     # Save user to db if not already there
     if not me:
-        newuser = User(access_token=token, email=user['email'], recruiter=False)
+        newuser = User(access_token=token, email=user['email'], recruiter=False, picture=user['picture'])
         db.session.add(newuser)
         db.session.commit()
         session['user'] = newuser.to_dict()
@@ -176,10 +185,18 @@ def recruiter_profile():
     # Get info relevant to recruiter
     query = Jobposting.query.filter_by(userid=session['user']['id'])
     jobs = []
+    students = []
     for item in query:
-        jobs.append(item.to_dict())
+        res = item.to_dict()
+        res['count'] = Savedjobs.query.filter_by(jobid=item.id).count()
+        jobs.append(res)
+        ids = Savedjobs.query.all()
+        if ids:
+            for sid in ids:
+                s = User.query.all()[0]
+                students.append(s.to_dict())
 
-    return render_template('recruiter.html', jobs=jobs)
+    return render_template('recruiter.html', jobs=jobs, students=students)
 
 
 @app.route('/logout')
@@ -192,17 +209,21 @@ def logout():
 def student_dashboard():
     return render_template('student.html')
 
+
 @app.route('/company-recruiter')
 def recruiter_dashboard():
     return render_template('company-recruiter.html')
+
 
 @app.route('/recruiter')
 def recruiterTemplate():
     return render_template('recruiter_stream_job_card.html')
 
+
 @app.route('/editpost')
 def edit_post():
     return render_template('edit_post.html')
+
 
 @app.route('/postjob', methods=['GET', 'POST'])
 def post_job():
@@ -219,9 +240,12 @@ def post_job():
             desired_skills=request.form['desired_skills'],
             university=request.form['university'],
             tags=request.form['tags'],
+            location=request.form['location'],
+            date=request.form['date'],
             year=request.form['year'])
         db.session.add(jobpost)
         db.session.commit()
+        return redirect(url_for('recruiter_profile'))
     return render_template('postjob.html')
 
 

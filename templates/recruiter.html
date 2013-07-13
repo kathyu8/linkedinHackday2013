@@ -3,6 +3,7 @@
     <title>Recruiter</title>
 </head>
 <body>
+    <img src="{{ session.user.picture }}">
     <a href="{{ url_for('post_job') }}">Post a new job</a>
     <a href="{{ url_for('logout') }}">Click here to logout</a>
 
@@ -15,6 +16,17 @@
             {% endfor %}
             </ul>
         {% endfor %}
+    {% endif %}
+
+    {% if students %}
+        <h2>Students!</h2>
+        {% for student in students %}
+            <ul>
+            {% for key, value in student.iteritems() %}
+                <li>{{ key }}: {{ value }}</li>
+            {% endfor %}
+            </ul>
+        {% endfor %}   
     {% endif %}
 
 </body>
