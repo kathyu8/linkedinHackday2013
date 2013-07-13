@@ -1,9 +1,12 @@
-<html>
-<head>
-    <title>Login</title>
-</head>
-<body>
-    <a href="https://www.linkedin.com/uas/oauth2/authorization?response_type=code&client_id=dkqwsero67sh&state=\xea/\xa7\xf2V?\x95\x17\xff\x7fb\x19`\xe0,L\xd6W\xcd\xb8\r\x86>W&redirect_uri=http://localhost:5000/student_login">Student</a>
-    <a href="https://www.linkedin.com/uas/oauth2/authorization?response_type=code&client_id=dkqwsero67sh&state=\xea/\xa7\xf2V?\x95\x17\xff\x7fb\x19`\xe0,L\xd6W\xcd\xb8\r\x86>W&redirect_uri=http://localhost:5000/recruiter_login">Recruiter</a>
-</body>
-</html>
+{% extends "base.html" %}
+
+{% block userdock %}
+    <h3>Welcome to Inversity!</h3>
+{% endblock userdock %}
+
+{% block stream %}
+<div style='position:relative;left:150px;'>
+<a href="https://www.linkedin.com/uas/oauth2/authorization?response_type=code&client_id=dkqwsero67sh&state=\xea/\xa7\xf2V?\x95\x17\xff\x7fb\x19`\xe0,L\xd6W\xcd\xb8\r\x86>W&redirect_uri=http://localhost:5000/student_login" class='btn btn-inverse' style='position:relative;left:-50px;'>Student looking for Jobs?</a>
+<a href="https://www.linkedin.com/uas/oauth2/authorization?response_type=code&client_id=dkqwsero67sh&state=\xea/\xa7\xf2V?\x95\x17\xff\x7fb\x19`\xe0,L\xd6W\xcd\xb8\r\x86>W&redirect_uri=http://localhost:5000/recruiter_login" class='btn btn-primary'>Recruiter looking for that perfect student?</a>
+</div>
+{% endblock stream %}
