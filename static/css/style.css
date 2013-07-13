@@ -283,3 +283,35 @@ border: 0; border-top: 1px solid #ccc;
 	float: right;
 	background-position: 0 0;
 }
+
+#contactstudent {
+	margin-top: 10px;
+	vertical-align: top;
+	margin-left: 10px;
+}
+
+.studentapp {
+	padding: 10px;
+}
+
+.studentapp a {
+	text-decoration: none;
+	background-color: #0077b5;
+	color: white;
+	padding: 5px;
+	-moz-border-radius: 10px;
+  	-webkit-border-radius: 15px;
+	padding: 5px;
+	width: 150px;
+}
+
+.studentapp a:hover {
+	text-decoration: none;
+	background-color: #659EC7;
+	color: white;
+	padding: 5px;
+	-moz-border-radius: 10px;
+  	-webkit-border-radius: 15px;
+	padding: 5px;
+	width: 150px;
+}

@@ -4,11 +4,13 @@
 	<h2>STUDENTS WHO HAVE APPLIED TO YOUR JOBS:</h2>
    {% if students %}
         {% for student in students %}
-            <ul>
+        	<div class="studentapp">
+            
                 <script src="//platform.linkedin.com/in.js" type="text/javascript"></script>
                 <script type="IN/MemberProfile" data-id="{{ student.public_profile_url }}" data-format="inline"></script>
-                <a href="{{ url_for('contact_student') }}?sid={{ student.id }}">Click here to contact this student</a>
-            </ul>
+                <a id="contactstudent" href="{{ url_for('contact_student') }}?sid={{ student.id }}">Contact</a>
+            
+        </div>
         {% endfor %}   
     {% endif %}
 {% endblock %}

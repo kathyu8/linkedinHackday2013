@@ -46,9 +46,9 @@
 		            	<div id="jobExtInfo">
 		            		<div id="universities" style="display:inline-block;">{{ job.university }}</div>
 		            		{% if students %}
-				        	<a href="" id="applicants" style="display:inline-block;">{{ students|length }} Applicants Applied</a>
+				        	<a href="/applicants" id="applicants" style="display:inline-block;">{{ job.count }} Applicants Applied</a>
 				        	{% else %}
-				        	<a href="" id="applicants" style="display:inline-block;">0 Applicants Applied</a>
+				        	<span style="display:inline-block;">0 Applicants Applied</span>
 		            		{% endif %}
 		            	</div> 
 		            </div>
