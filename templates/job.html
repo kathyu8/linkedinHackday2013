@@ -13,5 +13,7 @@
 
 <!-- notifications & add universities -->
 {% block sidebar %}
-    <a href="{{ url_for('save_job') }}?userid={{ session.user.id }}&jobid={{ job.id }}"><img src="/static/resources/apply_with_linkedin.png"></a>
+    <a href="{{ url_for('save_job') }}?userid={{ session.user.id }}&jobid={{ job.id }}"><div id="jobOptions">
+        <a id="apply"><img id="checkmark" src="/static/resources/checkmark.png">Apply</a>
+    </div>
 {% endblock %}

@@ -409,7 +409,6 @@ def contact_student():
     s.web.send(message)
     return redirect(url_for('recruiter_profile'))
 
-
 @app.route('/delete-saved')
 def delete_saved():
         jid = request.args.get('jid')
