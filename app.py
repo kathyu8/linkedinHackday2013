@@ -12,9 +12,15 @@ db = SQLAlchemy(app)
 def hello_world():
     return 'Hello World!'
     
-@app.route('/post-job.html')
+@app.route('/post-job')
 def post_job():
-    return 'hit'
+    retval = {'title': 'Job Posting',
+            }
+    if request.method == 'POST':
+        print 'post'
+        return 'post'
+    print 'get'
+    return render_template('post-job.html', None)
     
 
 if __name__ == '__main__':
