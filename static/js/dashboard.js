@@ -1,3 +1,4 @@
+
 $(document).ready(function() {  
 
 	$("#saveBtn").on("click", function() {
@@ -17,11 +18,7 @@ $(document).ready(function() {
 		return false;
 	});
 
-	$("#applyAll").click(function(){
-		var jobPosts = $(".jobPost");
-		jobPosts.each(function(i, jobPost){
-			console.log("clicking on jobPost!");
-			applyForm();
+
 	$("#applyAllJobs").on('click', function(e){
 		var jobPosts = $(".jobPost");
 		$(".jobPost").each(function(i, jobPost){
@@ -29,14 +26,6 @@ $(document).ready(function() {
 		});
 		return false;
 	});
-
-    function applyForm(){
-    	console.log("applying!");
-    	$("#apply").html("Applied");
-        $("#apply").attr("id","applied");
-    	$("#checkmark").css("display", "inline-block");
-    	return false;
-    }
 
     $('#university').click(function() {
         var $this = $(this);
@@ -66,3 +55,13 @@ $(document).ready(function() {
     });
 
 });
+
+function applyForm(e){
+	console.log("applying!");
+	$("#apply").attr("id","applied");
+	$("#apply").html("Applied");
+	$("#checkmark").show();
+	$("#checkmark").attr("display", "inline");
+	e.preventDefault();
+	return false;
+}

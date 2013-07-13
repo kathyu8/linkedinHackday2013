@@ -19,9 +19,10 @@
 			<div class="jobPost">
 			    <form class="jobPostForm" style="display:inline-block; margin-right:10px;">
 			        <ul>
-			            <li class="jobActions"><input type="checkbox" name="" value=""><br></li>
-			            <li class="jobActions"><a href=""></a><img id="deleteBtn" src="../static/resources/deleteBtn.png" width="15px" height="15px"></li>
-			            <li class="jobActions"><a id="star" href="{{ url_for('save_job') }}?userid={{ session.user.id }}&jobid={{ job.id }}"><a/><img id="saveBtn" src="/static/resources/favorite.png" width="15px" height="15px"></li>
+
+			            <li id="jobActions"><input id="willApply" type="checkbox" name="" value=""><br></li>
+			            <li id="jobActions"><a href=""></a><img id="deleteBtn" src="../static/resources/deleteBtn.png" width="15px" height="15px"></li>
+			            <li id="jobActions"><a href="{{ url_for('save_job') }}?userid={{ session.user.id }}&jobid={{ job.id }}"><a/><img id="saveBtn" src="/static/resources/favorite.png" width="15px" height="15px"></li>
 			        </ul>
 			    </form>
 			    <div id="jobCard" style="display:inline-block">
