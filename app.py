@@ -6,7 +6,9 @@ app = Flask(__name__)
 
 
 @app.route("/")
-def hello():
+def index():
+    if 'access_token' in session:
+        return redirect(url_for('profile'))
     return render_template('login.html')
 
 
@@ -24,7 +26,12 @@ def hola():
 def profile():
     token = session['access_token']
     profile = requests.get('https://api.linkedin.com/v1/people/~:(first-name,last-name,email-address,summary,specialties,positions,picture-url,skills)?format=json&oauth2_access_token='+token)
-    return profile.content
+    return render_template('profile.html')
+
+@app.route('/logout')
+def logout():
+    session.pop('access_token', None)
+    return redirect(url_for('index'))
 
 app.secret_key = '\xf8\x98\x80\xea\xde\xad\x9d\xf9\x90\xf58\x19\x062\x13]&f\x90\xb6Q\x1b\xf6\xb8'
 
